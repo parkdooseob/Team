@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+
+div.container-fluid{	
+	/* border: 1px solid red; */
+	margin-top : 3%;
+	padding-left : 3%;
+	padding-right : 3%;
+	padding-bottom : 3%;
+	width: 100%;
+}
+
+
+div.space{
+	height: 50px;
+}
+
+/* 카드 마우스오버 했을 때 */
+.container-fluid .card{	
+	margin: 1%;
+	display: inline-block;
+	left: 5px;
+	
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.container-fluid .card:HOVER{
+	
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
