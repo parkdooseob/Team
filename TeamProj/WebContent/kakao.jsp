@@ -10,7 +10,7 @@
 	<!-- Rest API 키  :  7bed2c2cc35da2f635429b5665085d84 -->
 	<!-- /PrivateProject1225/kakao -->
 	<!-- “https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84
-	&redirect_uri=http://localhost:8181/PrivateProject1225/kakao&response_type=code” -->
+	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code” -->
 	<a href="https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84
 	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code">카카오 로그인</a>
 </body>

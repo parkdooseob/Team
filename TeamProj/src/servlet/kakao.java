@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 /**
  * Servlet implementation class kakao
  */
@@ -31,7 +35,7 @@ public class kakao extends HttpServlet {
 		doProcess(request, response);
 	}
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 카카오톡에서 접속 REST API CODE를 받아옴
 		String code = request.getParameter("code");
 		
 		System.out.println("code : "+code);
@@ -39,7 +43,14 @@ public class kakao extends HttpServlet {
 		String appKey = "7bed2c2cc35da2f635429b5665085d84";
 		
 		String redirectURI = "http://localhost:8181/TeamProj/kakao";
-			   try {
+		
+		String line = null;
+		
+		String access_token = null;
+		
+		String refresh_token = null;
+		
+		try {
 			    //연결
 			    URL url = new URL("https://kauth.kakao.com/oauth/token");
 			    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -60,25 +71,72 @@ public class kakao extends HttpServlet {
 			   //응답
 			   BufferedReader br = null;
 			   br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-			   String line = null;
+			   
 			   while ((line = br.readLine()) != null) {
-			    System.out.println(line);
-			   }
-			 
+			    System.out.println(line);			    
+			    
+				JsonParser jsonParser = new JsonParser();
+				
+				JsonObject obj =(JsonObject) jsonParser.parse(line);
+				
+				access_token = obj.get("access_token").getAsString();
+				
+				refresh_token = obj.get("refresh_token").getAsString();
+				
+				System.out.println("access_token : "+access_token);
+				
+				System.out.println("refresh_token : "+refresh_token);
+			    
+			   }		  
+			  
 			   //닫기
 			   osw.close();
 			   br.close();
-			   } catch (MalformedURLException e) {
-			    e.printStackTrace();
-			   } catch (ProtocolException e) {
-			    e.printStackTrace();
-			   } catch (UnsupportedEncodingException e) {
-			    e.printStackTrace();
-			   } catch (IOException e) {
-			    e.printStackTrace();
-			   } 
 			  
-			 
+			   
+		   } catch (MalformedURLException e) {
+		    e.printStackTrace();
+		   } catch (ProtocolException e) {
+		    e.printStackTrace();
+		   } catch (UnsupportedEncodingException e) {
+		    e.printStackTrace();
+		   } catch (IOException e) {
+		    e.printStackTrace();			  			
+		   } 
+			  
+		    			
+		   System.out.println("access_token : "+access_token);	 
+		   URL url = new URL("https://kapi.kakao.com/v2/user/me");					   
+		   HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		   conn.setDoOutput(true);
+		   conn.setRequestMethod("POST");
+		   //conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");
+		   conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");		   
+		   conn.setRequestProperty("Authorization", "Bearer " + access_token );
+		   
+		   String param = URLEncoder.encode("Bearer", "UTF-8") + "=" + URLEncoder.encode(access_token, "UTF-8");
+		   param += "&" + URLEncoder.encode("property_keys", "UTF-8") + "=" + URLEncoder.encode("[kakao_account.email]", "UTF-8");
+		   
+		   //전송	   
+		   OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
+		   osw.write(param);
+		   osw.flush();
+		 
+		   //응답
+		   
+		   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+		   
+		   line = null;
+		   while ((line = br.readLine()) != null) {
+		    System.out.println(line);			    
+		   }
+		    
+		   //닫기
+		   osw.close();
+		   br.close();
+		
+		
+		
 		
 	}
 
