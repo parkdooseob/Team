@@ -6,48 +6,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- font -->
+<!-- 복사 1 font -->
 <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
 
-<!-- google icon -->
+<!-- 복사2 google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+
+<!-- 위치 받아오기 -->
+<script type="text/javascript">
+function getLocation() {
+	  if (navigator.geolocation) { // GPS를 지원하면
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      var latitude = position.coords.latitude;
+	      var longitude = position.coords.longitude;
+	      var geocode = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false&key=AIzaSyD_0NjxlJgulWcZxrKIbqEtYQYTSYbZnX0";
+
+	      jQuery.ajax({
+	        url: geocode,
+	        type: 'POST',
+	           success: function(myJSONResult){
+	                    if(myJSONResult.status == 'OK') {
+	                        var tag = myJSONResult.results[0].formatted_address;
+// 	                        alert(tag);
+							
+							/*나라 이름 빼기*/
+							var index = tag.indexOf(" ");
+                       		tag = tag.substr(index);
+	                        document.getElementById("my_location").innerHTML = tag;
+	                    }
+	            }
+	    });
+	      
+	    }, function(error) {
+	      console.error(error);
+	    }, {
+	      enableHighAccuracy: false,
+	      maximumAge: 0,
+	      timeout: Infinity
+	    });
+	  } 
+	}
+	
+	
+	getLocation();
+
+
+
+</script>
+
 <style>
+/**복사3*/
 .w3-bar-item{
  letter-spacing: 1px;
  font-family: "Nanum Barun Gothic" !important; 
  color: #666666;
  font-style: bold;
-}
+}/**자를 부분*/
 
-body{
- font-family: "Nanum Barun Gothic" !important;
-}
+/* body{ */
+/*  letter-spacing: 2px; */
+/*  font-family: "Nanum Barun Gothic" !important;  */
+/*  color: #666666; */
+/* } */
 
 </style>
 
 
 
 <body>
-
-<!-- Navbar (sit on top) -->
+<!-- Navbar 복사4-->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
     <a href="#home" class="w3-bar-item w3-button"><b>SS</b> share space</a>
-    <a href="#home" class="w3-bar-item w3-button">내 주변</a>
-    <a href="#home" class="w3-bar-item w3-button">지역</a>
-    <a href="#home" class="w3-bar-item w3-button">장소검색</a>
-    <a href="#home" class="w3-bar-item w3-button">기획전</a>
-    <a href="#home" class="w3-bar-item w3-button">공간 올리기</a>
+<!--     <a href="#home" class="w3-bar-item w3-button">내 주변</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">지역</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">장소검색</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">기획전</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">공간 올리기</a> -->
     
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-      <a href="#projects" class="w3-bar-item w3-button">예약내역</a>
-      <a href="#about" class="w3-bar-item w3-button">신청내역</a>
+      <a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>
+      <a href="#about" class="w3-bar-item w3-button">마이페이지</a>
       <a href="#contact" class="w3-bar-item w3-button">회원가입</a>
-      <a href="#home" class="w3-bar-item w3-button">로그인</a>
+      <a href="#home" class="w3-bar-item w3-button">로그인</a><!-- 로그아웃 -->
+      
     </div>
   </div>
 </div>
+<!-- 복사4종료  -->
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px; max-height:800px" id="home">
@@ -60,7 +110,7 @@ body{
       <h3>Share Space</h3>
       <div class="w3-row-padding" style="margin:0 -16px;">
         <div class="w3-col m3">
-          <label>공간유형(드롭다운)</label>
+          <label>공간유형</label>
           <input class="w3-input w3-border" type="text" placeholder="Departing from">
         </div>
         <div class="w3-col l3">
@@ -94,85 +144,132 @@ body{
 
 <!-- 페이지 center-->
 <div class="w3-content w3-padding" style="max-width:1564px">
-  
+<!--  <div class="w3-content w3-padding" style="max-width:85%">  -->
   
   <!--내 위치-->
-  <div class="w3-container w3-padding-26" align="center">
+  <div class="w3-container w3-padding-16 w3-margin-bottom"  align="center">
     <i class="material-icons" style="color:rgb(255,52,120);">near_me</i>
-    <p class="w3-border-bottom w3-border-light-grey w3-padding-2">내 위치</p>
+    <span id="my_location" style="font-size:20px;">내 위치</span>
   </div>
   
   
   
-  <!-- 버튼-->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">추천 공간</h3>
+  <!-- 버튼(일반회원) -->
+  <div class="w3-container w3-padding-16 w3-content" style="max-width:45%">
+  	
+  	<div class="w3-quarter w3-center">
+  	<a href="#" style="text-decoration: none;">
+  	<i class="material-icons" style="font-size:80px;color:#333;">loyalty</i>
+  	<p style="margin:2px;">쿠폰/이벤트</p>
+  	</a>
+  	</div>
+
+  	<div class="w3-quarter w3-center">
+  	<a href="#" style="text-decoration: none;">
+  	<i class="material-icons" style="font-size:80px;color:#333;">search</i>  	
+  	<p style="margin:2px;">공간찾기</p>
+  	</a>
+  	</div>
+  	
+  	<div class="w3-quarter w3-center">
+  	<a href="#" style="text-decoration: none;">
+  	<i class="material-icons" style="font-size:80px;color:#333;">event</i>
+  	<p style="margin:2px;">예약내역</p>
+  	</a>
+  	</div>
+  	
+  	<div class="w3-quarter w3-center">
+  	<a href="#" style="text-decoration: none;">
+  	<i class="material-icons" style="font-size:80px;color:#333;">stars</i>
+  	<p style="margin:2px;">호스트되기</p>
+  	</a>
+  	</div>    
   </div>
+  
+    <!-- 버튼(호스트회원) -->
+<!--   <div class="w3-container w3-padding-16 w3-content" style="max-width:45%"> -->
+  	
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">loyalty</i> -->
+<!--   	<p style="margin:2px;">쿠폰/이벤트</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
+  	
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">search</i>  	 -->
+<!--   	<p style="margin:2px;">공간찾기</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
+  	
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">weekend</i> -->
+<!--   	<p style="margin:2px;">공간등록</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
+  	
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">event_note</i> -->
+<!--   	<p style="margin:2px;">공간관리</p> -->
+<!--   	</a> -->
+<!--   	</div>    -->
+  	
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">event</i> -->
+<!--   	<p style="margin:2px;">예약내역</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
+  	
+  	 
+<!--   </div> -->
 
 
   <!-- Project Section 추천공간-->
   <div class="w3-container w3-padding-32" id="projects">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">추천 공간</h3>
-    <select>
-    	<option>카페</option>
-    	<option>스터디룸</option>
-    	<option>강의장</option>
-    </select>
   </div>
 
   <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-        <img src="img/room01.jpg" alt="House" style="width:100%">
-      </div>
+    <div class="w3-col l4 w3-margin-bottom">
+      <a href="#" class="w3-btn" style="padding: 0px">
+	      <div class="w3-display-container">
+		     <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
+		     <img src="img/room01.jpg" alt="House" style="width:100%">
+	      </div>
+      </a>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-        <img src="img/room02.jpg" alt="House" style="width:100%">
-      </div>
+    <div class="w3-col l4 w3-margin-bottom">
+      <a href="#" class="w3-btn" style="padding: 0px">
+	      <div class="w3-display-container">
+		    <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
+		    <img src="img/room02.jpg" alt="House" style="width:100%">
+	      </div>
+      </a>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-        <img src="img/room03.jpg" alt="House" style="width:100%">
-      </div>
+    <div class="w3-col l4 w3-margin-bottom">
+      <a href="#" class="w3-btn" style="padding: 0px">
+	      <div class="w3-display-container">
+		    <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
+		    <img src="img/room03.jpg" alt="House" style="width:100%">
+	      </div>
+      </a>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="img/room04.jpg" alt="House" style="width:100%">
-      </div>
-    </div>
+    
+<!--     <div class="w3-col l3 w3-margin-bottom"> -->
+<!--       <a href="#" class="w3-btn" style="padding: 0px"> -->
+<!-- 	      <div class="w3-display-container"> -->
+<!-- 		     <div class="w3-display-topleft w3-black w3-padding">Barn House</div> -->
+<!-- 		     <img src="img/room04.jpg" alt="House" style="width:100%">  -->
+<!-- 	      </div> -->
+<!--       </a> -->
+<!--     </div> -->
   </div>
 
-<!--   <div class="w3-row-padding"> -->
-<!--     <div class="w3-col l3 m6 w3-margin-bottom"> -->
-<!--       <div class="w3-display-container"> -->
-<!--         <div class="w3-display-topleft w3-black w3-padding">Summer House</div> -->
-<!--         <img src="/w3images/house2.jpg" alt="House" style="width:99%"> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--     <div class="w3-col l3 m6 w3-margin-bottom"> -->
-<!--       <div class="w3-display-container"> -->
-<!--         <div class="w3-display-topleft w3-black w3-padding">Brick House</div> -->
-<!--         <img src="/w3images/house5.jpg" alt="House" style="width:99%"> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--     <div class="w3-col l3 m6 w3-margin-bottom"> -->
-<!--       <div class="w3-display-container"> -->
-<!--         <div class="w3-display-topleft w3-black w3-padding">Renovated</div> -->
-<!--         <img src="/w3images/house4.jpg" alt="House" style="width:99%"> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--     <div class="w3-col l3 m6 w3-margin-bottom"> -->
-<!--       <div class="w3-display-container"> -->
-<!--         <div class="w3-display-topleft w3-black w3-padding">Barn House</div> -->
-<!--         <img src="/w3images/house3.jpg" alt="House" style="width:99%"> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
+
 
 
  <!-- Slideshow -->
