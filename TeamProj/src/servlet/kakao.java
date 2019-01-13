@@ -35,14 +35,14 @@ public class kakao extends HttpServlet {
 		doProcess(request, response);
 	}
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 카카오톡에서 접속 REST API CODE를 받아옴
+		// 移댁뭅�삤�넚�뿉�꽌 �젒�냽 REST API CODE瑜� 諛쏆븘�샂
 		String code = request.getParameter("code");
 		
 		System.out.println("code : "+code);
 		
 		String appKey = "7bed2c2cc35da2f635429b5665085d84";
 		
-		String redirectURI = "http://localhost:8181/TeamProj/kakao";
+		String redirectURI = "http://localhost:8080/TeamProj/kakao";
 		
 		String line = null;
 		
@@ -51,24 +51,24 @@ public class kakao extends HttpServlet {
 		String refresh_token = null;
 		
 		try {
-			    //연결
+			    //�뿰寃�
 			    URL url = new URL("https://kauth.kakao.com/oauth/token");
 			    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			    conn.setDoOutput(true);
 			    conn.setRequestMethod("POST");
 			    conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");
 			  
-			   //데이터
+			   //�뜲�씠�꽣
 			   String param = URLEncoder.encode("grant_type", "UTF-8") + "=" + URLEncoder.encode("authorization_code", "UTF-8");
 			   param += "&" + URLEncoder.encode("client_id", "UTF-8") + "=" + URLEncoder.encode(appKey, "UTF-8");
 			   param += "&" + URLEncoder.encode("redirect_uri", "UTF-8") + "=" + URLEncoder.encode(redirectURI, "UTF-8");
 			   param += "&" + URLEncoder.encode("code", "UTF-8") + "=" + URLEncoder.encode(code, "UTF-8");
-			   //전송
+			   //�쟾�넚
 			   OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 			   osw.write(param);
 			   osw.flush();
 			 
-			   //응답
+			   //�쓳�떟
 			   BufferedReader br = null;
 			   br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 			   
@@ -89,7 +89,7 @@ public class kakao extends HttpServlet {
 			    
 			   }		  
 			  
-			   //닫기
+			   //�떕湲�
 			   osw.close();
 			   br.close();
 			  
@@ -115,14 +115,14 @@ public class kakao extends HttpServlet {
 		   conn.setRequestProperty("Authorization", "Bearer " + access_token );
 		   
 		   String param = URLEncoder.encode("Bearer", "UTF-8") + "=" + URLEncoder.encode(access_token, "UTF-8");
-		   param += "&" + URLEncoder.encode("property_keys", "UTF-8") + "=" + URLEncoder.encode("[kakao_account.email]", "UTF-8");
-		   
-		   //전송	   
+		   /*param += "&" + URLEncoder.encode("property_keys", "UTF-8") + "=" + URLEncoder.encode("['kakao_account.has_email']", "UTF-8");*/
+		  
+		   //�쟾�넚	   
 		   OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 		   osw.write(param);
 		   osw.flush();
 		 
-		   //응답
+		   //�쓳�떟
 		   
 		   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 		   
@@ -131,11 +131,11 @@ public class kakao extends HttpServlet {
 		    System.out.println(line);			    
 		   }
 		    
-		   //닫기
+		   //�떕湲�
 		   osw.close();
 		   br.close();
 		
-		
+		   response.sendRedirect("kakao.jsp");
 		
 		
 	}
