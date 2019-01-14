@@ -13,7 +13,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
 
 <!-- 위치 받아오기 -->
 <script type="text/javascript">
