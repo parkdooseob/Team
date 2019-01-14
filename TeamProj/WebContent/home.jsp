@@ -4,7 +4,7 @@
 <html>
 <title>나눔 공간</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- 복사 1 font -->
 <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
@@ -15,8 +15,36 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
 
-<!-- 위치 받아오기 -->
+<!-- awsome icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<!-- datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  
+  $(document).ready(function() {
+	    $("#datepicker").datepicker({
+	     onSelect: function(date) {
+// 	        alert(date);
+	        myFunction("date_select");
+	     },
+	     altField : '#date',
+	    dateFormat : 'yy년 mm월 dd일',
+	    maxDate:6,
+	    minDate:0
+	  });
+	});
+
+</script>
+
+
+ 
 <script type="text/javascript">
+
+/*선택 창 열기*/
+
 function getLocation() {
 	  if (navigator.geolocation) { // GPS를 지원하면
 	    navigator.geolocation.getCurrentPosition(function(position) {
@@ -53,11 +81,74 @@ function getLocation() {
 	
 	getLocation();
 
-//hihi
+	
+/*버튼 클릭*/
+// function myFunction(id) {
+// 	  var x = document.getElementById(id);
 
+// 	  if (x.className.indexOf("w3-hide") != -1) {//w3-hide가 있으면
+// 		  x.className = x.className.replace(" w3-hide", "");    
+// //	 	  x.className += " w3-show";
+// 	  } else { //없으면
+// //	     x.className = x.className.replace(" w3-show", "");
+// 	    x.className += " w3-hide";
+// 	  }
+// }
+
+
+function myFunction(id) {
+	  var x = document.getElementById(id);
+	  var a = document.getElementById("type_select");
+	  var b = document.getElementById("location_select");
+	  var c = document.getElementById("date_select");
+	  var d = document.getElementById("number_select");
+	  
+	  
+	  if (x.className.indexOf("w3-show") == -1) {//처음 클릭했다.
+		  
+		  //우선 전부 안보이게 지우고
+		  a.className = a.className.replace(" w3-show", "");
+		  b.className = b.className.replace(" w3-show", "");
+		  c.className = c.className.replace(" w3-show", "");
+		  d.className = d.className.replace(" w3-show", "");
+		  //내꺼만 다시 보이게
+		  x.className += " w3-show";
+	  } else { // 열려있는 상태에서 클릭했다.
+	    x.className = x.className.replace(" w3-show", "");
+	  }
+	}
+
+
+//값 셋팅
+
+function setValue(obj, target){
+// 	var x = obj.innerHTM;
+	var x = obj.value;
+// 	alert(x);
+	document.getElementById(target).value = x;
+	var a = document.getElementById("type_select");
+	var b = document.getElementById("location_select");
+	var c = document.getElementById("date_select");
+	var d = document.getElementById("number_select");
+	a.className = a.className.replace(" w3-show", "");
+	b.className = b.className.replace(" w3-show", "");
+	c.className = c.className.replace(" w3-show", "");
+	d.className = d.className.replace(" w3-show", "");
+}
+
+	
+	
 </script>
 
 <style>
+body{
+
+font-family: "Nanum Barun Gothic"; 
+letter-spacing: 1px;
+ 
+}
+
+
 /**복사3*/
 .w3-bar-item{
  letter-spacing: 1px;
@@ -72,6 +163,10 @@ function getLocation() {
 /*  color: #666666; */
 /* } */
 
+
+#search_div{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 </style>
 
 
@@ -100,39 +195,128 @@ function getLocation() {
 <!-- 복사4종료  -->
 
 <!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px; max-height:800px" id="home">
 
-  <img class="w3-image" src="img/main02.jpg" alt="Architecture" width="1500" height="800">
-  <div class="w3-display-middle w3-margin-top w3-center">
-<!--     <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span class="w3-hide-small w3-text-light-grey">Architects</span></h1> -->
-    <!-- 검색창 -->
-    <div class="w3-container w3-black w3-padding-16 w3-opacity-min">
-      <h3>Share Space</h3>
-      <div class="w3-row-padding" style="margin:0 -16px;">
-        <div class="w3-col m3">
-          <label>공간유형</label>
-          <input class="w3-input w3-border" type="text" placeholder="Departing from">
+<header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
+  <img class="w3-image" src="img/main03.jpg" width="100%">
+  <form action="창만들기.jsp" method="post">
+ 	 <div class="w3-display-middle w3-margin-top w3-center w3-container" style="min-height: 500px; top:70%">
+     <!-- 첫 row -->
+      <div class="w3-row w3-round-large w3-white w3-hide-small" style="margin:10px -16px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       display: inline-block; vertical-align: top;">
+      <div id="new" style="position:relative;">
+        <div class="w3-col l3 m3 w3-padding">
+          <label>공간</label>
+           <button type="button" onclick="myFunction('type_select')" style="border: none; padding:0px; background-color: white;">
+<!--           	<i class="fas fa-coffee" style="display:inline-block"></i> -->
+          	<input class="w3-input w3-border-0" type="text" value="카페" style = "text-align:center; font-size:1.5em; font-weight:bold; color:rgb(118,118,118);" id="type">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
+          
+
         </div>
-        <div class="w3-col l3">
+        
+        <div class="w3-col l3 m3 w3-border-left w3-padding">
           <label >지역</label>
-          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+           <button type="button" onclick="myFunction('location_select')" style="border: none; padding:0px; background-color: white;">
+          	<input class="w3-input w3-border-0" type="text" value="해운대구" style = "text-align:center; font-size:1.5em; font-weight:bold; color:rgb(118,118,118)" id="location">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
         </div>
-        <div class="w3-col l3">
-          <label>날짜</label>
-          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+          
+        <div class="w3-col l4 m4 w3-border-left w3-padding">
+          <label>날짜</label><br/>
+          <button type="button" onclick="myFunction('date_select')" style="border: none; padding:0px; background-color: white;">
+          	<input class="w3-input w3-border-0" type="text" style = "text-align:center; font-size:1.5em; font-weight:bold; color:rgb(118,118,118)" id="date">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
         </div>
-        <div class="w3-col l1">
+        
+        <div class="w3-col l2 m2 w3-border-left w3-padding">
           <label>인원</label>
-          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+          <button type="button" onclick="myFunction('number_select')" style="border: none; padding:0px; background-color: white;">
+          	<input class="w3-input w3-border-0" type="text" value="2" style = "text-align:center; font-size:1.5em; font-weight:bold; color:rgb(118,118,118)" id="number">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
         </div>
-        <div class="w3-col l2">
-          <label>검색</label>
-          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+        	
+      </div><!--row -->
+       
+   <button class="w3-btn w3-round" onclick="submit()" style="background-color:rgb(252,247,52); color:rgb(11,11,11); width:31%;position:absolute;top:140px;left:30%;z-index:-1;">
+   <b>Search and find dates</b></button>
+     
+   </div>   
+   <!-- 선택 row -->
+      
+		<div class="w3-row w3-hide " style="margin:2px -16px;" id="type_select">
+	        <div class="w3-col l3 w3-padding w3-white w3-round" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	  			<input type="button" value="카페" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>
+	  			<input type="button" value="스터디룸" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/> 
+	  			<input type="button" value="강의실" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>
+	  			<input type="button" value="야외" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>  
+	        </div>
+	        
+	        <div class="w3-col l9 w3-padding"></div>
         </div>
-      </div>
-      <p><button class="w3-button w3-dark-grey">Search and find dates</button></p>
-    </div><!-- 검색 창 -->   
-  </div>
+        
+       	<div class="w3-row w3-hide" style="margin:2px -16px;" id="location_select">
+	        <div class="w3-col l3 w3-padding"></div>
+	        <div class="w3-col l4 w3-padding w3-white w3-round" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	  			<table width="100%">
+	  				<tr height="1.5em">
+	  					<td><input type="button" value="강서구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="금정구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="기장구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="남구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  				</tr>
+	  				
+	  				<tr>
+	  					<td><input type="button" value="동구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="동래구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="부산진구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="북구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  				</tr>
+	  				<tr>
+	  					<td><input type="button" value="사상구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="사하구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="서구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="수영구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					
+	  				</tr>
+	  				<tr>
+	  					<td><input type="button" value="연제구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="영도구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="중구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  					<td><input type="button" value="해운대구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
+	  				</tr>
+	  			</table>
+	  			
+	        </div>
+	        <div class="w3-col l5 w3-padding"></div>
+        </div>
+        
+        
+        <div class="w3-row w3-hide w3-center" style="margin:2px -16px;" id="date_select">
+	        <div class="w3-col l6 w3-padding"></div>
+	        <div class="w3-col l4 w3-padding w3-white w3-round" id="datepicker" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></div>
+	        <div class="w3-col l2 w3-padding"></div>
+        </div>
+        
+        
+        <div class="w3-row w3-hide" style="margin:2px -16px;" id="number_select">
+	        <div class="w3-col l10 w3-padding"></div>
+	        <div class="w3-col l2 w3-padding w3-white w3-round" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	  			<input type="button" value="1" onclick="setValue(this, 'number')" style="border: none; padding:0px; background-color: white;"><br/>
+	  			<input type="button" value="2" onclick="setValue(this, 'number')" style="border: none; padding:0px; background-color: white;"><br/> 
+	  			<input type="button" value="3" onclick="setValue(this, 'number')" style="border: none; padding:0px; background-color: white;"><br/>
+	  			<input type="button" value="4" onclick="setValue(this, 'number')" style="border: none; padding:0px; background-color: white;"><br/> 
+	        </div>        
+        </div>
+        
+		
+      
+   	 </div> <!-- 검색창  -->
+   	   	   
+	</form>
   
 <!--   <div class="w3-display-bottomleft w3-container w3-amber" -->
 <!--    		style="bottom:5%;opacity:0.7;width:100%"> -->
@@ -141,6 +325,7 @@ function getLocation() {
 <!--   </div> -->
 
 </header>
+
 
 <!-- 페이지 center-->
 <div class="w3-content w3-padding" style="max-width:1564px">
@@ -152,7 +337,7 @@ function getLocation() {
     <span id="my_location" style="font-size:20px;">내 위치</span>
   </div>
   
-  
+
   
   <!-- 버튼(일반회원) -->
   <div class="w3-container w3-padding-16 w3-content" style="max-width:45%">
@@ -283,12 +468,12 @@ function getLocation() {
     </div>
     <div class="w3-display-container mySlides">
       <img src="img/event02.jpg" style="width:100%; height:30%;">
-      <div class="w3-display-middle w3-container w3-padding-32">
+      <div class="w3-display-middle w3-container w3-padding-32" >
         <span class="w3-white w3-padding-large w3-animate-bottom">Klorim tipsum</span>
       </div>
     </div>
     <div class="w3-display-container mySlides">
-      <img src="img/event02.jpgg" style="width:100%; height:30%;">
+      <img src="img/event02.jpg" style="width:100%; height:30%;">
       <div class="w3-display-topright w3-container w3-padding-32">
         <span class="w3-white w3-padding-large w3-animate-bottom">Blorum pipsum</span>
       </div>
@@ -348,6 +533,11 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-white";
 }
+
+
+
+
+
 </script>
 </body>
 
