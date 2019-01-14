@@ -71,6 +71,11 @@ public class UserLoginController extends HttpServlet {
 		
 		session.setAttribute("udto", udto);
 		
+		// 일반 로그인시 0
+		// 구글 로그인시 1
+		// 카카오 로그인시 2
+		session.setAttribute("login_val", 0);
+		
 		RequestDispatcher dis = request.getRequestDispatcher("home.jsp");
 		
 		dis.forward(request, response);

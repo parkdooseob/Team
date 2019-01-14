@@ -66,8 +66,8 @@
 		</div>
 		<div class="w3-row w3-margin-top">
 			<div class="w3-col m4"><p> </p></div>		
-			<div class="w3-col m4 ">
-				 <input type="text" class="w3-input" placeholder="비밀번호" name="pass">
+			<div class="w3-col m4">
+				 <input type="password" class="w3-input" placeholder="비밀번호" name="pass">
 			</div>
 			<div class="w3-col m4"><p> </p></div>
 		</div>
@@ -83,7 +83,7 @@
 		<div class="w3-row w3-margin-top">
 			<div class="w3-col m4"><p> </p></div>		
 			<div class="w3-col m4 ">
-				 <input type="text" class="w3-input" placeholder="비밀번호 확인" name="email_ck">
+				 <input type="password" class="w3-input" placeholder="비밀번호 확인" name="email_ck">
 			</div>
 			<div class="w3-col m4"><p> </p></div>
 		</div>

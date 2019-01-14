@@ -12,7 +12,7 @@
 function popupOpen(){
 
 	var popUrl ="https://accounts.google.com/o/oauth2/v2/auth?"
-			+"redirect_uri=http://localhost:8080/TeamProj/google&"
+			+"redirect_uri=http://localhost:8181/TeamProj/google&"
 			+"response_type=code&"
 			+"client_id=463533794318-unijrkh4odbf94n2pms494toetghdgir.apps.googleusercontent.com&"
 			+"scope=openid%20email&"
@@ -36,7 +36,7 @@ function popupOpen(){
 	<!-- “https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84
 	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code” -->
 	<a href="https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84
-	&redirect_uri=http://localhost:8080/TeamProj/kakao&response_type=code">카카오 로그인</a>
+	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code">카카오 로그인</a>
 	
 	
 	<a href="https://kapi.kakao.com/v1/user/logout ">로그아웃</a>
@@ -47,7 +47,7 @@ function popupOpen(){
 	<!-- 구글 redirect_uri : http://localhost:8080/TeamProj/google-->
 	<!-- 구글 client_secret : Vwl1rm1fi2naT41YevXIP7IB -->
 	<a href="https://accounts.google.com/o/oauth2/v2/auth?
-			redirect_uri=http://localhost:8080/TeamProj/google&
+			redirect_uri=http://localhost:8181/TeamProj/google&
 			response_type=code&
 			client_id=463533794318-unijrkh4odbf94n2pms494toetghdgir.apps.googleusercontent.com&
 			scope=openid%20email&
@@ -55,5 +55,6 @@ function popupOpen(){
 	
 	<a href="javascript:popupOpen();"> 열려라 팝업창! </a>
 	
+	<a href="https://www.google.com/accounts/Logout">구글 로그아웃</a>
 </body>
 </html>

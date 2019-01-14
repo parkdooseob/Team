@@ -17,9 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import userDB.UserDAO;
+import userDB.UserDTO;
 
 @WebServlet("/google")
 public class google extends HttpServlet {
@@ -40,13 +44,13 @@ public class google extends HttpServlet {
 		
 		String client_id = "463533794318-unijrkh4odbf94n2pms494toetghdgir.apps.googleusercontent.com";
 		
-		String redirectURI = "http://localhost:8080/TeamProj/google";
+		String redirectURI = "http://localhost:8181/TeamProj/google";
 		
 		String client_secret = "Vwl1rm1fi2naT41YevXIP7IB";
 		
 		String line = null;
 		
-		StringBuffer  str = new StringBuffer();
+		StringBuffer  str = null;
 		
 		String access_token = null;
 		
@@ -74,6 +78,8 @@ public class google extends HttpServlet {
 		   //�쓳�떟
 		   BufferedReader br = null;
 		   br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+		   
+		   str = new StringBuffer();
 		   
 		   while ((line = br.readLine()) != null) {
 			   
@@ -121,23 +127,74 @@ public class google extends HttpServlet {
 	   String param = URLEncoder.encode("access_token", "UTF-8") + "=" + URLEncoder.encode(access_token, "UTF-8");
 	   /*param += "&" + URLEncoder.encode("access_token", "UTF-8") + "=" + URLEncoder.encode(access_token, "UTF-8");*/
 	  
-	   //�쟾�넚	   
+	   // 보내기	   
 	   OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 	   osw.write(param);
 	   osw.flush();
 	 
-	   //�쓳�떟
+	   // 일어들이기
 	   
 	   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 	   
-	   line = null;
+	   line = null;	   
+	   str = new StringBuffer();
 	   while ((line = br.readLine()) != null) {
-	    System.out.println(line);			    
-	   }
 	    
-	   //�떕湲�
+		   str.append(line);
+	   } 
+	   
+	   System.out.println(str);
+	   	
+	   JsonParser jsonParser = new JsonParser();
+	    
+	   JsonObject obj =(JsonObject) jsonParser.parse(str.toString());		    
+	    
+	   String email = obj.get("email").getAsString();
+		
+	   String name = obj.get("given_name").getAsString();
+		
+	   UserDAO udao = new UserDAO();
+	   
+	   boolean flag = udao.getEmail(email);
+	   
+	   
+	   if(flag){
+		   
+		   System.out.println("이메일 있음");
+		   
+	   }else{
+		   System.out.println("이메일 등록 안됨");
+		   
+		   UserDTO udto = new UserDTO();
+		   udto.setEmail(email);
+		   udto.setName(name);
+		   
+		   udao.insertUser(udto);
+	   }
+	
+	   HttpSession session = request.getSession();
+		
+	   UserDTO udto = udao.getUser(email);
+		
+	   session.setAttribute("udto", udto);
+	   
+	   // 일반 로그인시 0
+	   // 구글 로그인시 1
+	   // 카카오 로그인시 2
+	   session.setAttribute("login_val", 1);
+	   
+	   // 닫기
 	   osw.close();
 	   br.close();
+	   
+	   response.setContentType("text/html; charset:UTF-8"); 
+	   
+	   PrintWriter out = response.getWriter();
+	   out.println("<script>");
+	   out.println("opener.document.location.reload();");
+	   out.println("self.close();");		   
+	   out.println("</script>");
+	   
 	   
 	}
 }

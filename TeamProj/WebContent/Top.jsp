@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	/* 동적 페이지 폴더 변경 */
+	/* <jsp:include page="../Top.jsp" flush="false"/>
+		동적 페이지 폴더 변경 */
 	String servlet = request.getServletPath();
 	String path = "../";
 	String path1 = ".";
 	String path2 = "../user/";
-	if(servlet.equals("/home.jsp")){
+	if(servlet.equals("/home.jsp") || servlet.equals("/Top.jsp")){
 		path="";
 		path1="";
 		path2 = "user/";
@@ -15,8 +16,7 @@
 	request.setAttribute("path", path);
 	request.setAttribute("path1", path1);
 	request.setAttribute("path2", path2);
-%>    
-
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,9 +35,35 @@
 
 <title>Insert title here</title>
 <script type="text/javascript">
+$(document).ready(function() {	  
+
 	$("#google-sign").click(function(){	
-		alert("팝업");    
+		var popUrl ="https://accounts.google.com/o/oauth2/v2/auth?"
+			+"redirect_uri=http://localhost:8181/TeamProj/google&"
+			+"response_type=code&"			
+			+"client_id=463533794318-unijrkh4odbf94n2pms494toetghdgir.apps.googleusercontent.com&"
+			+"scope=openid%20email&"
+			+"access_type=offline";	
+			//팝업창에 출력될 페이지 URL
+	
+	var popOption = "width=400, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+	
+	var win = window.open(popUrl,"",popOption);		
+		
    });
+	
+	$("#kakao-sign").click(function(){	
+		var popUrl ="https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84"
+			+"&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code";	
+			//팝업창에 출력될 페이지 URL
+	
+	var popOption = "width=400, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+	
+	var win = window.open(popUrl,"",popOption);		
+		
+   });	
+	
+});
 </script>
 <style type="text/css">
  .w3-bar-item{

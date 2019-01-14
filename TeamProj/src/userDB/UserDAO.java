@@ -59,7 +59,7 @@ public class UserDAO {
 			}
 		}
 	}
-
+	// 사용자 로그인시 등록된 계정이 있는지 유무
 	public int userCheck(String email, String pass) {
 		// TODO Auto-generated method stub
 			int check=-1;
@@ -78,6 +78,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			System.out.println(pstmt.toString());
+			
 			boolean row = rs.next();
 			
 			System.out.println("row : "+row);
@@ -120,7 +121,7 @@ public class UserDAO {
 			
 			pstmt.setString(1, email);		
 			
-			rs = pstmt.executeQuery();			
+			rs = pstmt.executeQuery();		
 			
 			rs.next();		
 			
@@ -141,7 +142,7 @@ public class UserDAO {
 		
 		return udto;
 	}
-
+	
 	public boolean insertUser(UserDTO udto) {
 		boolean result = false;
 		try {
@@ -171,5 +172,33 @@ public class UserDAO {
 		return result;
 	}
 	
-	
+	public boolean getEmail(String email) {
+		
+		boolean flag = false;
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM user WHERE email=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, email);		
+			
+			rs = pstmt.executeQuery();		
+			
+			flag = rs.next();
+			
+			
+		
+		} catch (Exception e) {
+			System.out.println("userCheck() 메서드에서 "+e);
+		} finally {
+			freeResource();
+		}
+		
+		return flag;
+		
+		
+	}
 }
