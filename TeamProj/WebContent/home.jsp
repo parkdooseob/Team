@@ -147,16 +147,6 @@ font-family: "Nanum Barun Gothic";
 letter-spacing: 1px;
  
 }
-
-
-/**복사3*/
-.w3-bar-item{
- letter-spacing: 1px;
- font-family: "Nanum Barun Gothic" !important; 
- color: #666666;
- font-style: bold;
-}/**자를 부분*/
-
 /* body{ */
 /*  letter-spacing: 2px; */
 /*  font-family: "Nanum Barun Gothic" !important;  */
@@ -172,27 +162,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 <body>
-<!-- Navbar 복사4-->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>SS</b> share space</a>
-<!--     <a href="#home" class="w3-bar-item w3-button">내 주변</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">지역</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">장소검색</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">기획전</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">공간 올리기</a> -->
-    
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>
-      <a href="#about" class="w3-bar-item w3-button">마이페이지</a>
-      <a href="#contact" class="w3-bar-item w3-button">회원가입</a>
-      <a href="#home" class="w3-bar-item w3-button">로그인</a><!-- 로그아웃 -->
-      
-    </div>
-  </div>
-</div>
-<!-- 복사4종료  -->
+<jsp:include page="Top.jsp" flush="false"/>
 
 <!-- Header -->
 
