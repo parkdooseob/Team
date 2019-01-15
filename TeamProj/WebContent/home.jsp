@@ -83,19 +83,6 @@ function getLocation() {
 	getLocation();
 
 	
-/*버튼 클릭*/
-// function myFunction(id) {
-// 	  var x = document.getElementById(id);
-
-// 	  if (x.className.indexOf("w3-hide") != -1) {//w3-hide가 있으면
-// 		  x.className = x.className.replace(" w3-hide", "");    
-// //	 	  x.className += " w3-show";
-// 	  } else { //없으면
-// //	     x.className = x.className.replace(" w3-show", "");
-// 	    x.className += " w3-hide";
-// 	  }
-// }
-
 
 function myFunction(id) {
 	  var x = document.getElementById(id);
@@ -148,16 +135,7 @@ font-family: "Nanum Barun Gothic";
 letter-spacing: 1px;
  
 }
-/* body{ */
-/*  letter-spacing: 2px; */
-/*  font-family: "Nanum Barun Gothic" !important;  */
-/*  color: #666666; */
-/* } */
 
-
-#search_div{
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 </style>
 
 
@@ -167,11 +145,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 <jsp:include page="Top.jsp" flush="false"/>
 <!-- 복사4종료  -->
 
-<!-- Header -->
+<!-- Header시작 -->
 
 <header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
   <img class="w3-image" src="img/main03.jpg" width="100%">
-  <form action="창만들기.jsp" method="post">
+  <form action="detail.jsp" method="post">
  	 <div class="w3-display-middle w3-margin-top w3-center w3-container" style="min-height: 500px; top:70%">
      <!-- 첫 row -->
       <div class="w3-row w3-round-large w3-white w3-hide-small" style="margin:10px -16px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -214,12 +192,13 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         	
       </div><!--row -->
        
-   <button class="w3-btn w3-round" onclick="submit()" style="background-color:rgb(252,247,52); color:rgb(11,11,11); width:31%;position:absolute;top:140px;left:30%;z-index:-1;">
-   <b>Search and find dates</b></button>
+   	  <button class="w3-btn w3-round" onclick="submit()" style="background-color:rgb(252,247,52); color:rgb(11,11,11); width:31%;position:absolute;top:140px;left:35%;z-index:-1;">
+   		<b>Search and find dates</b>
+   	  </button>
      
    </div>   
-   <!-- 선택 row -->
-      
+   
+   <!-- 선택 row -->   
 		<div class="w3-row w3-hide " style="margin:2px -16px;" id="type_select">
 	        <div class="w3-col l3 w3-padding w3-white w3-round" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 	  			<input type="button" value="카페" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>
@@ -227,7 +206,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	  			<input type="button" value="강의실" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>
 	  			<input type="button" value="야외" onclick="setValue(this, 'type')" style="border: none; padding:0px; background-color: white;"><br/>  
 	        </div>
-	        
 	        <div class="w3-col l9 w3-padding"></div>
         </div>
         
@@ -241,7 +219,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	  					<td><input type="button" value="기장구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
 	  					<td><input type="button" value="남구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
 	  				</tr>
-	  				
 	  				<tr>
 	  					<td><input type="button" value="동구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
 	  					<td><input type="button" value="동래구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
@@ -262,7 +239,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	  					<td><input type="button" value="해운대구" onclick="setValue(this, 'location')" style="border: none; padding:0px; background-color: white;"><br/></td>
 	  				</tr>
 	  			</table>
-	  			
 	        </div>
 	        <div class="w3-col l5 w3-padding"></div>
         </div>
