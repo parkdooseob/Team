@@ -1,4 +1,4 @@
-package userDB;
+package user;
 
 public class UserDTO {
 	

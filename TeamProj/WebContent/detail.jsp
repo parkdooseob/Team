@@ -137,16 +137,16 @@ function myFunction2() {
 
 </head>
 <body>
-		
+
 	<div style="width:100%;">		
 			
-			
+			<jsp:include page="Top.jsp" flush="false"/>
 			<!-- ÆÀÀå´Ô ºÎÅ¹ Navbar -->
-				<div class="w3-bar w3-green" style="width: 100%; position: fixed; z-index: 9999; height:50px">
+				<!-- <div class="w3-bar w3-green" style="width: 100%; position: fixed; z-index: 9999; height:50px">
 				  <div class="w3-bar-item">London</div>
 				  <div class="w3-bar-item">Paris</div>
 				  <div class="w3-bar-item">Tokyo</div>
-				</div>	
+				</div> -->	
 				
 			<!-- ÁÂÃø ¿µ¿ª  -->
 			<div style="float: left; width: 50%; margin-top: 50px">

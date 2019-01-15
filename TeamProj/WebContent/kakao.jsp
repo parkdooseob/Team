@@ -39,7 +39,7 @@ function popupOpen(){
 	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code">카카오 로그인</a>
 	
 	
-	<a href="https://kapi.kakao.com/v1/user/logout ">로그아웃</a>
+	<a href="https://kapi.kakao.com/v1/user/logout">로그아웃</a>
 	<br>
 	<br>
 	<!-- 구글 로그인 구현 -->
@@ -55,6 +55,10 @@ function popupOpen(){
 	
 	<a href="javascript:popupOpen();"> 열려라 팝업창! </a>
 	
-	<a href="https://www.google.com/accounts/Logout">구글 로그아웃</a>
+	<a href="https://www.google.com/accounts/Logout">구글 로그아웃</a><br>
+	
+	<input type="text" maxlength="3" name="name">
+	
+	
 </body>
 </html>

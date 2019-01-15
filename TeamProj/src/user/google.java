@@ -1,4 +1,4 @@
-package servlet;
+package user;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,9 +21,6 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import userDB.UserDAO;
-import userDB.UserDTO;
 
 @WebServlet("/google")
 public class google extends HttpServlet {
@@ -62,7 +59,7 @@ public class google extends HttpServlet {
 		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		    conn.setDoOutput(true);
 		    conn.setRequestMethod("POST");
-		    /*conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");*/
+		    conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");
 		    conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		   // 전송 파라미터
 		    String param = URLEncoder.encode("grant_type", "UTF-8") + "=" + URLEncoder.encode("authorization_code", "UTF-8");
@@ -89,6 +86,8 @@ public class google extends HttpServlet {
 		   }		  
 		    System.out.println(str);		    
 		    
+		    
+		    
 		    JsonParser jsonParser = new JsonParser();
 		    
 		    JsonObject obj =(JsonObject) jsonParser.parse(str.toString());		    
@@ -99,7 +98,12 @@ public class google extends HttpServlet {
 			
 			System.out.println("access_token : "+access_token);
 			
-			System.out.println("refresh_token : "+refresh_token);
+			if(!refresh_token.equals("")){
+				System.out.println("refresh_token : "+refresh_token);
+			}
+			
+			
+			
 			
 			
 		   // 닫기
@@ -120,7 +124,7 @@ public class google extends HttpServlet {
 	   HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	   conn.setDoOutput(true);
 	   conn.setRequestMethod("GET");
-	   //conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");
+	   conn.setRequestProperty("Accept-Language",  "ko-kr,ko;q=0.8,en-us;q=0.5,en;q=0.3");
 	   conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");		   
 	   conn.setRequestProperty("Authorization", "Bearer " + access_token );
 	   
