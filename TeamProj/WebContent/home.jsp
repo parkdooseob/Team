@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html>
 <title>나눔 공간</title>
@@ -14,10 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- 
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
 
 <!-- awsome icon -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
@@ -151,6 +147,16 @@ font-family: "Nanum Barun Gothic";
 letter-spacing: 1px;
  
 }
+
+
+/**복사3*/
+.w3-bar-item{
+ letter-spacing: 1px;
+ font-family: "Nanum Barun Gothic" !important; 
+ color: #666666;
+ font-style: bold;
+}/**자를 부분*/
+
 /* body{ */
 /*  letter-spacing: 2px; */
 /*  font-family: "Nanum Barun Gothic" !important;  */
@@ -166,7 +172,27 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 <body>
-<jsp:include page="Top.jsp" flush="false"/>
+<!-- Navbar 복사4-->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>SS</b> share space</a>
+<!--     <a href="#home" class="w3-bar-item w3-button">내 주변</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">지역</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">장소검색</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">기획전</a> -->
+<!--     <a href="#home" class="w3-bar-item w3-button">공간 올리기</a> -->
+    
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>
+      <a href="#about" class="w3-bar-item w3-button">마이페이지</a>
+      <a href="#contact" class="w3-bar-item w3-button">회원가입</a>
+      <a href="#home" class="w3-bar-item w3-button">로그인</a><!-- 로그아웃 -->
+      
+    </div>
+  </div>
+</div>
+<!-- 복사4종료  -->
 
 <!-- Header -->
 
@@ -311,11 +337,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     <span id="my_location" style="font-size:20px;">내 위치</span>
   </div>
   
-<!-- 로그인시 Session값 받아오기 -->
- <c:set var="email" value="${sessionScope.udto.email }"/>
- <c:choose>
- 	<c:when test="${email eq null }"> 	
- 
+
+  
   <!-- 버튼(일반회원) -->
   <div class="w3-container w3-padding-16 w3-content" style="max-width:45%">
   	
@@ -347,54 +370,52 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   	</a>
   	</div>    
   </div>
-</c:when>
-<c:otherwise>  
+  
     <!-- 버튼(호스트회원) -->
-  <div class="w3-container w3-padding-16 w3-content" style="max-width:45%">
+<!--   <div class="w3-container w3-padding-16 w3-content" style="max-width:45%"> -->
   	
-  	<div class="w3-col w3-center" style="width:20%;">
-  	<a href="#" style="text-decoration: none;">
-  	<i class="material-icons" style="font-size:80px;color:#333;">loyalty</i>
-  	<p style="margin:2px;">쿠폰/이벤트</p>
-  	</a>
-  	</div>
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">loyalty</i> -->
+<!--   	<p style="margin:2px;">쿠폰/이벤트</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
   	
-  	<div class="w3-col w3-center" style="width:20%;">
-  	<a href="#" style="text-decoration: none;">
-  	<i class="material-icons" style="font-size:80px;color:#333;">search</i>  	
-  	<p style="margin:2px;">공간찾기</p>
-  	</a>
-  	</div>
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">search</i>  	 -->
+<!--   	<p style="margin:2px;">공간찾기</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
   	
-  	<div class="w3-col w3-center" style="width:20%;">
-  	<a href="#" style="text-decoration: none;">
-  	<i class="material-icons" style="font-size:80px;color:#333;">weekend</i>
-  	<p style="margin:2px;">공간등록</p>
-  	</a>
-  	</div>
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">weekend</i> -->
+<!--   	<p style="margin:2px;">공간등록</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
   	
-  	<div class="w3-col w3-center" style="width:20%;">
-  	<a href="#" style="text-decoration: none;">
-  	<i class="material-icons" style="font-size:80px;color:#333;">event_note</i>
-  	<p style="margin:2px;">공간관리</p>
-  	</a>
-  	</div>   
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">event_note</i> -->
+<!--   	<p style="margin:2px;">공간관리</p> -->
+<!--   	</a> -->
+<!--   	</div>    -->
   	
-  	<div class="w3-col w3-center" style="width:20%;">
-  	<a href="#" style="text-decoration: none;">
-  	<i class="material-icons" style="font-size:80px;color:#333;">event</i>
-  	<p style="margin:2px;">예약내역</p>
-  	</a>
-  	</div>
+<!--   	<div class="w3-col w3-center" style="width:20%;"> -->
+<!--   	<a href="#" style="text-decoration: none;"> -->
+<!--   	<i class="material-icons" style="font-size:80px;color:#333;">event</i> -->
+<!--   	<p style="margin:2px;">예약내역</p> -->
+<!--   	</a> -->
+<!--   	</div> -->
   	
   	 
-  </div>
-</c:otherwise>
-</c:choose>
+<!--   </div> -->
+
 
   <!-- Project Section 추천공간-->
   <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">추천 공간 ${sessionScope.udto.name }</h3>
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">추천 공간</h3>
   </div>
 
   <div class="w3-row-padding">
