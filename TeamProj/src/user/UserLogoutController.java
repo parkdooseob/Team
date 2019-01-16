@@ -78,7 +78,7 @@ public class UserLogoutController extends HttpServlet {
 			   System.out.println(str);
 			   session.invalidate();
 		}else{
-			
+			session.invalidate();
 		}		
 		
 		response.setContentType("text/html; charset=UTF-8");
