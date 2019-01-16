@@ -41,7 +41,11 @@ $(document).ready(function(){
 	   }else{
 		   $("#btn-next").prop("disabled", true);
 	   }
-   });      
+   });
+   
+	$( "#target1" ).load( "agreetext_service.txt" );
+	$( "#target2" ).load( "agreetext_privacy.txt" );
+	$( "#target3" ).load( "agreetext_location.txt" );  
     
 });
 </script>
@@ -68,7 +72,7 @@ $(document).ready(function(){
 		<div class="w3-row">
 			<div class="w3-col m3"><p> </p></div>		
 			<div class="w3-col m6 ">
-				<textarea rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
+				<textarea id="target1" rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
 			</div>
 			<div class="w3-col m3"><p> </p></div>
 		</div>
@@ -83,7 +87,7 @@ $(document).ready(function(){
 		<div class="w3-row">
 			<div class="w3-col m3"><p> </p></div>		
 			<div class="w3-col m6 ">
-				<textarea rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
+				<textarea id="target2" rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
 			</div>
 			<div class="w3-col m3"><p> </p></div>
 		</div>
@@ -98,7 +102,7 @@ $(document).ready(function(){
 		<div class="w3-row">
 			<div class="w3-col m3"><p> </p></div>		
 			<div class="w3-col m6 ">
-				<textarea rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
+				<textarea id="target3" rows="10" cols="20" style="width: 100%; overflow: scroll;" wrap="off" readonly="readonly"></textarea> 
 			</div>
 			<div class="w3-col m3"><p> </p></div>
 		</div>
