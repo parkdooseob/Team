@@ -82,7 +82,7 @@
 		</div>
 		<div class="w3-row w3-margin-top">
 			<div class="w3-col m4"><p> </p></div>		
-			<div class="w3-col m4 ">
+			<div class="w3-col m4">
 				 <input type="password" class="w3-input" placeholder="비밀번호 확인" name="email_ck">
 			</div>
 			<div class="w3-col m4"><p> </p></div>

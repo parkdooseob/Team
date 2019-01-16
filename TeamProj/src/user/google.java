@@ -94,16 +94,14 @@ public class google extends HttpServlet {
 		    
 			access_token = obj.get("access_token").getAsString();
 			
-			refresh_token = obj.get("refresh_token").getAsString();
-			
-			System.out.println("access_token : "+access_token);
-			
-			if(!refresh_token.equals("")){
-				System.out.println("refresh_token : "+refresh_token);
+			if(str.toString().contains("refresh_token")){
+				refresh_token = obj.get("refresh_token").getAsString();
+			}else{
+				System.out.println("refresh_token 없다");
 			}
 			
 			
-			
+			System.out.println("access_token : "+access_token);		
 			
 			
 		   // 닫기
