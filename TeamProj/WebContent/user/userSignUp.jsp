@@ -28,7 +28,7 @@
 		<div class="w3-row w3-margin-top">
 			<div class="w3-col m4 "><p> </p></div>		
 			<div class="w3-col m4 w3-dark-grey w3-left">
-				<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlargefa fa-envelope-o"></i></p> 
+				<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge fa fa-envelope"></i></p> 
 			</div>
 			<div class="w3-col m4"><p> </p></div>
 		</div>
