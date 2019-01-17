@@ -17,7 +17,8 @@
 <script type="text/javascript">		
 	$(document).ready(function() {		
 		if(${sessionScope.login_val} !=0){
-			$("#email").attr("readonly",true).attr("disabled",false);		
+			$("#email").attr("readonly",true).attr("disabled",false);
+			$(".pass").attr("readonly",true).attr("disabled",false);
 		}
 		
 		$("#btn5_plus").click(function(){			
@@ -106,7 +107,7 @@
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text" class="w3-input" placeholder="비밀번호" name="pass" >
+			<input type="text" class="w3-input pass" placeholder="현재 비밀번호" name="pass" >
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
@@ -118,13 +119,25 @@
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text" class="w3-input" placeholder="비밀번호 확인" name="pass">
+			<input type="text" class="w3-input pass" placeholder="바꿀 비밀번호" name="pass" >
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● 비밀번호 확인</small>
+			<small>● 변경할 비밀 번호를 입력해 주세요</small>
+		</div>
+		<div class="w3-col m4"></div>
+	</div>
+	<div class="w3-row" >								
+		<div class="w3-col m8">
+			<input type="text" class="w3-input pass" placeholder="비밀번호 확인" name="pass">
+		</div>
+		<div class="w3-col m4"></div>
+	</div>
+	<div class="w3-row">								
+		<div class="w3-col m8">
+			<small>● 변경할 비밀 번호를 다시 한번 입력해 주세요</small>
 		</div>
 		<div class="w3-col m4"></div>
 	</div>

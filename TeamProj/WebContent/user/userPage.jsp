@@ -9,8 +9,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<!-- 복사 1 font -->
+<link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
+
+<!-- 복사2 google icon -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style type="text/css">
 	.con{
 		border: 1px solid white;		
@@ -91,7 +95,6 @@ $(document).ready(function() {
 <!-- 최상단 네비 바 시작 -->
 <jsp:include page="../Top.jsp" flush="false"/>
 <!-- 최상단 네비 바 종료 -->
-
 <div class="w3-container w3-padding-large con">		
 		<div class="w3-row">
 			<div class="w3-col m2"></div>				
