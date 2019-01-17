@@ -26,6 +26,8 @@ public class HomeController extends HttpServlet {
 	}
 
 	protected void Process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("접속");
+		
 		
 		//1. DTO 객체 만들어 놓고?
 		
@@ -51,7 +53,7 @@ public class HomeController extends HttpServlet {
 공간이랑 사진은 join
 
 <추천 공간> 유저 레벨이 2에서 추천 수가 높은 순으로 정렬
-select s.공간 이름(글 제목이랑은 다를 수 있음), s.공간유형, p사진1   ,  sum(별점), 룸번호
+select s.공간 제목, s.공간유형, p사진1   ,  sum(별점), 룸번호
 
 from space s join with picture p 
 where s.host in (select host_no from host_user where host_level = 3)
@@ -86,8 +88,8 @@ order by 추천수
 //				req.setAttribute("v", v);
 		
 		
-		RequestDispatcher dis = request.getRequestDispatcher("home.jsp");
-		dis.forward(request, response);
+//		RequestDispatcher dis = request.getRequestDispatcher("home.jsp");
+//		dis.forward(request, response);
 	}
 	
 
