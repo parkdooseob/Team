@@ -23,7 +23,8 @@ integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00
 <!-- datepicker -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+
+<script type="text/javascript">
   
   $(document).ready(function() {
 	    $("#datepicker").datepicker({
@@ -38,11 +39,11 @@ integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00
 	  });
 	});
 
-</script>
+
 
 
  
-<script type="text/javascript">
+
 
 /*선택 창 열기*/
 
@@ -152,9 +153,9 @@ letter-spacing: 1px;
 <!-- Header시작 -->
 
 <header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
-  <img class="w3-image" src="img/main03.jpg" width="100%">
+  <img class="w3-image" src="img/main_pic.jpg" width="100%">
   <form action="search.do" method="post">
- 	 <div class="w3-display-middle w3-margin-top w3-center w3-container" style="min-height: 500px; top:70%">
+ 	 <div class="w3-display-middle w3-margin-top w3-center w3-container" style="min-height: 500px; top:80%">
      <!-- 첫 row -->
       <div class="w3-row w3-round-large w3-white w3-hide-small" style="margin:10px -70px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
        display: inline-block; vertical-align: top;">
@@ -204,7 +205,7 @@ letter-spacing: 1px;
       </div><!--row -->
        
    	  <button class="w3-btn w3-round" onclick="submit()" style="background-color:rgb(252,247,52); color:rgb(11,11,11); width:31%;position:absolute;top:140px;left:35%;z-index:-1;">
-   		<b>Search and find dates</b>
+   		<b>검색</b>
    	  </button>
      
    </div>   

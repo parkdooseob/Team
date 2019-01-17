@@ -87,6 +87,14 @@ $(document).ready(function() {
   color: #666666;
   font-style: bold;
 }
+#drop>a{
+	border-bottom: 1px solid #f2f2f2;
+}
+#drop>a:HOVER{
+	border-bottom: 1px solid black;
+	trans
+}
+
 </style>
 </head>
 <body>
@@ -94,25 +102,24 @@ $(document).ready(function() {
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
     <a href="${path}home.jsp" class="w3-bar-item w3-button"><b>SS</b> share space</a>
-<!--     <a href="#home" class="w3-bar-item w3-button">내 주변</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">지역</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">장소검색</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">기획전</a> -->
-<!--     <a href="#home" class="w3-bar-item w3-button">공간 올리기</a> -->
-    <%-- <%=servlet %>  : ${path2} --%>
-   <%--  ${sessionScope.udto.name } --%>
-    <!-- Float links to the right. Hide them on small screens -->
     <c:set var="email" value="${sessionScope.udto.email }"/>
     <div class="w3-right w3-hide-small">     
-      <a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>
-      <a href="#about" class="w3-bar-item w3-button">마이페이지</a>
+    		<a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>      
       <c:choose>
       	<c:when test="${email eq null }">
       		<a href="${path2}userSingUp_auth.jsp" class="w3-bar-item w3-button">회원가입</a>
       		<a href="#home" class="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'">로그인</a><!-- 로그아웃 -->
       	</c:when>
       	<c:otherwise>
-      		<a href="${path1}./UserLogoutController.do" class="w3-bar-item w3-button">로그아웃</a>      	
+      		<a href="${path2}userPage.jsp" class="w3-bar-item w3-button">마이페이지</a>
+      		<div class="w3-dropdown-click">
+      			<button onclick="click_modal()" class="w3-bar-item w3-button">${sessionScope.udto.name }</button>
+      			<div id="drop" class="w3-dropdown-content w3-bar-block w3-card-4  w3-animate-zoom" style="right:0; width: 200px; top:63px;">
+      				<a href="#" class="w3-bar-item w3-button">프로필 수정</a>      				   				
+      				<a href="${path1}./UserLogoutController.do" class="w3-bar-item w3-button">로그아웃</a>      				
+    			</div>
+      		</div>	
+      		<%-- <a href="${path1}./UserLogoutController.do" class="w3-bar-item w3-button">로그아웃</a> --%>      	
       	</c:otherwise>	
       </c:choose>      
     </div>
@@ -126,7 +133,7 @@ $(document).ready(function() {
 	  <header class="w3-container w3-teal w3-center"> 
 	    <span onclick="document.getElementById('id01').style.display='none'" 
 	          class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-	    <h2>회원 로그인</h2>
+	    <h2><i class="w3-xxlarge fa fa-user"></i>회원 로그인</h2>
 	  </header>
       <form class="w3-container" action="${path1}./UserLoginController.do" method="post">
         <div class="w3-section">        
@@ -158,7 +165,16 @@ $(document).ready(function() {
 </div>
 
 <!-- 모달창 종료 -->
-
+<script type="text/javascript">
+ function click_modal() {
+  var x = document.getElementById("drop");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+} 
+</script>
 
 </body>
 </html>
