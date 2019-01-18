@@ -9,7 +9,7 @@
 <body>
 
 	<form action="commController.do" method="post">
-		<textarea name="t_comment" rows="4" cols="100"></textarea>
+		<textarea name="t_comment" rows="4" cols="50"></textarea>
 		<input type="submit" value="Àü¼Û">
 	</form>
 
