@@ -201,4 +201,73 @@ public class UserDAO {
 		
 		
 	}
+	// 회원 패스워드 체크
+	public int emailCheck(String email) {
+		// TODO Auto-generated method stub
+		
+		int result=-1;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM user WHERE email = ?";			
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();	
+			
+			if(rs.next()){
+				result = 0;
+			}
+			
+			System.out.println("패스워드 체크 다오  : "+ rs.getString("email"));
+						
+			
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("passCheck() 메서드에서 "+e);
+		}
+		
+			
+		return result;
+		
+	}
+
+	public void userProfileUpdate(String email ,UserDTO udto) {
+		// TODO Auto-generated method stub
+		String sql="";
+		try {
+			
+			con = ds.getConnection();
+			
+			if(udto.getPass().equals("")){
+				sql = "UPDATE user SET name=? WHERE email= ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, udto.getName());
+				pstmt.setString(2, email);
+			}else{
+				sql = "UPDATE user SET email=?, name=?, pass=? WHERE email =? ";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, udto.getEmail());
+				pstmt.setString(2, udto.getName());
+				pstmt.setString(3, udto.getPass());
+				pstmt.setString(4, email);
+			}
+			
+			
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+	}
 }

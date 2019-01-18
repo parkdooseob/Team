@@ -14,12 +14,10 @@
 
 
 </style> 
-<script type="text/javascript">		
-	$(document).ready(function() {		
-		if(${sessionScope.login_val} !=0){
-			$("#email").attr("readonly",true).attr("disabled",false);
-			$(".pass").attr("readonly",true).attr("disabled",false);
-		}
+<script type="text/javascript">	
+	var flag=0;
+	
+	$(document).ready(function() {			
 		
 		$("#btn5_plus").click(function(){			
 			var i = Number($("#money").val());
@@ -51,15 +49,115 @@
 		});
 		
 		
-	});
+		 $("input[name='passwd']").keyup(function() {					
+								
+			/* var passwd = $(this).val(); */
+		 	var email = $("#email").val();
+		 	var passck = "";
+		 	var dbPass = "";
+				
+		});
+		 
+		$("#email_check").click(function(){	 
+			
+			var flag = -1;		
+			var email = $("#email").val();
+			var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+			
+			if(!getMail.test(email) || $("#email").val() ==""){
+				alert("형식에 맞게 입력해주세요!");
+				 $("#email_check").focus();
+				 return false;
+			}
+			
+			
+			//ID정규표현식을 이용하여 입력한 ID값이 맞을 경우(통과)
+			$.ajax({
+				type : "POST",
+				url  : "../userEmailCheck.do",
+				data: {"email": email}, //{parameterName, data} 형식
+				success: function(result){					
+					flag = result;		  	
+					
+					if(flag==0){
+						$("#p_alert").text("*등록된 아이디가 존재 합니다");
+						$("#p_alert").css("color","red");						
+						 return false;
+					}else if(flag==-1){
+						$("#p_alert").text("*사용 가능한 아이디입니다.");
+						$("#p_alert").css("color","blue");						
+						 return false;
+					}		 		
+					
+				}
+			});// ajax 끝	
+	
+		}); // 중복 체크버튼 이벤트 끝		
+		 
+		 $("#passwd_chage").click(function(){			
+			 $("input[name='passwd']").val("");
+			 $("input[name='passwd']").attr("disabled",false);
+			 $("input[name='passwd_ch']").attr("disabled",false);
+			 $("input[name='passwd_check']").attr("disabled",false);
+			 flag=1;
+		 });
+		
+	}); /*  ready 종료 */	
+	
+	function func_check(){
+		
+		var db_pass = ${sessionScope.udto.pass};
+		var txt_passwd = $("input[name='passwd']").val();
+		var txt_passwd_ch = $("input[name='passwd_ch']").val();
+		var txt_passwd_check = $("input[name='passwd_check']").val();
+		// 비밀번호 유효성 검증
+		var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+		
+		if(flag==1){
+			
+			if(db_pass != txt_passwd){
+				alert("현재 비밀번호가 다릅니다.");
+				$("input[name='passwd']").focus();
+				return false;
+			}
+			
+			if(!getCheck.test(txt_passwd_ch) || txt_passwd_ch==""){
+				alert("형식에 맞게 입력해주세요");
+				$("input[name='passwd_ch']").focus();
+				return false;				
+			}
+			
+			if(txt_passwd == txt_passwd_ch){
+				alert("현재 비밀번호와 동일합니다.");
+				$("input[name='passwd_ch']").focus();
+				return false;
+			}
+			
+			if(txt_passwd_ch != txt_passwd_check){
+				alert("변경비밀번호가 일치하지 않습니다.");
+				$("input[name='passwd_check']").focus();
+				return false;
+			}
+		}else{
+			document.form_userProfile.submit();
+		}
+		// 유효성이 완료되면 전송
+		document.form_userProfile.submit();
+	}
+		
+	
+	
 </script>
 </head>
 <body>
+
 	<div class="w3-row">				
 		<div class="w3-col m8 w3-dark-grey w3-left">
 			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge fa fa-user"></i>&nbsp;&nbsp;&nbsp;프로필 수정</p> 
 		</div>		
-	</div>	
+	</div>
+	<!-- 정보 수정 시작 -->
+	<form action="../UserProfileUpdateController.do" method="post" name="form_userProfile">	
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
@@ -68,16 +166,22 @@
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >								
-		<div class="w3-col m8">
+		<div class="w3-col m6">
 			<input type="text" id="email" class="w3-input" placeholder="email" name="email" value="${sessionScope.udto.email }">
+		</div>
+		<div class="w3-col m2">
+			<button type="button" class="w3-button w3-white w3-border w3-border-red w3-round-large" id="email_check">중복확인</button>	
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● SNS계정은 이메일이 없을 수도 있습니다. </small>
-		</div>
+			<small>● SNS계정은 이메일이 없을 수도 있습니다.(변경시 이메일 형식에 맞게 입력) </small>
+		</div>	
 		<div class="w3-col m4"></div>
+	</div>
+	<div class="w3-row" >
+		<div class="w3-col m12" id="p_alert"></div>
 	</div>
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row" >								
@@ -88,7 +192,7 @@
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text"  class="w3-input" placeholder="닉네임" name="name" value="${sessionScope.udto.name }">
+			<input type="text"  class="w3-input" placeholder="닉네임" name="nick_name" value="${sessionScope.udto.name }">
 		</div>
 		<div class="w3-col m4"></div>
 	</div>	
@@ -106,8 +210,11 @@
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >								
-		<div class="w3-col m8">
-			<input type="text" class="w3-input pass" placeholder="현재 비밀번호" name="pass" >
+		<div class="w3-col m6">
+			<input type="password" class="w3-input" placeholder="현재 비밀번호" name="passwd" value="${sessionScope.udto.pass }" disabled="disabled">
+		</div>
+		<div class="w3-col m2">	
+			<button type="button" class="w3-button w3-white w3-border w3-border-red w3-round-large" id="passwd_chage">비밀번호 변경</button>			
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
@@ -119,19 +226,19 @@
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text" class="w3-input pass" placeholder="바꿀 비밀번호" name="pass" >
+			<input type="password" class="w3-input" placeholder="변경 비밀번호" name="passwd_ch" disabled="disabled">
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● 변경할 비밀 번호를 입력해 주세요</small>
+			<small>● 변경할 비밀 번호를 입력해 주세요(4자~12자 사이의 영문으로 입력)</small>
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text" class="w3-input pass" placeholder="비밀번호 확인" name="pass">
+			<input type="password" class="w3-input" placeholder="변경 비밀번호 확인" name="passwd_check" disabled="disabled">
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
@@ -144,9 +251,12 @@
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row">
 		<div class="w3-col m8">	
-			<input type="submit" class="w3-button w3-block w3-red" value="저 장">
+			<input type="button" class="w3-button w3-block w3-red" value="저 장" onclick="func_check()">
 		</div>	
 	</div>
+	</form>
+	<!-- 정보 수정 끝-->
+	<!-- 내 포인트 시작 -->
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row w3-margin-top" ></div>
@@ -198,8 +308,17 @@
 </div>
 
 <!-- 모달창 종료 -->
+<!-- <script type="text/javascript">
+$(document).ready(function() {	
 	
-	
+	 if(${sessionScope.login_val} !=0){ 
+		 $("#email").attr("readonly",false).attr("disabled",true);			
+		 $("#passwd_chage").attr("readonly",false).attr("disabled",true);		
+	} 
+
+});
+</script>	
+	 -->
 	
 	
 </body>
