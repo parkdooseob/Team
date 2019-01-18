@@ -26,6 +26,7 @@ public class UserProfileUpdateController extends HttpServlet {
 		UserDAO udao = new UserDAO();
 		// System.out.println("여기는 일반회원정보 수정");
 		HttpSession session = request.getSession();
+		UserDTO session_dto = (UserDTO)session.getAttribute("udto");
 		// 일반회원 0, 구글 1, 카카오 2
 		// SNS계정은 닉네임만 수정할 수 있도록 분기 처리
 		int userflag = (int)session.getAttribute("login_val");
@@ -40,14 +41,15 @@ public class UserProfileUpdateController extends HttpServlet {
 			if(request.getParameter("passwd_ch").length()> 3){
 				udto.setPass(request.getParameter("passwd_ch"));				
 			}else{
-				udto.setPass((String)session.getAttribute("pass"));
+				udto.setPass(session_dto.getPass());
 			}		
 			
-		}else{			
+		}else{
+			
 			udto.setName(request.getParameter("nick_name"));						
 		}
 		
-		udao.userProfileUpdate((String)session.getAttribute("email"),udto);
+		udao.userProfileUpdate(session_dto.getEmail(),udto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("./home.jsp");
 		

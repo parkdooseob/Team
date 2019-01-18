@@ -244,12 +244,14 @@ public class UserDAO {
 		try {
 			
 			con = ds.getConnection();
-			
-			if(udto.getPass().equals("")){
+			System.out.println("다오왔다 :"+udto.getPass());
+			if(udto.getPass()== null){
+				System.out.println("SNS계정"+udto.getName()+":"+email);
 				sql = "UPDATE user SET name=? WHERE email= ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, udto.getName());
 				pstmt.setString(2, email);
+				System.out.println(pstmt.toString());
 			}else{
 				sql = "UPDATE user SET email=?, name=?, pass=? WHERE email =? ";
 				pstmt = con.prepareStatement(sql);
@@ -265,7 +267,7 @@ public class UserDAO {
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("userProfileUpdate() 메서드에서 "+e);
 		}
 		
 		

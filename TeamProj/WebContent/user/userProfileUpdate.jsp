@@ -10,10 +10,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<style type="text/css">
-
-
-</style> 
+<style type="text/css"></style> 
 <script type="text/javascript">	
 	var flag=0;
 	
@@ -104,9 +101,7 @@
 		
 	}); /*  ready 종료 */	
 	
-	function func_check(){
-		
-		var db_pass = ${sessionScope.udto.pass};
+	function func_check(){				
 		var txt_passwd = $("input[name='passwd']").val();
 		var txt_passwd_ch = $("input[name='passwd_ch']").val();
 		var txt_passwd_check = $("input[name='passwd_check']").val();
@@ -114,7 +109,8 @@
 		var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
 		
 		if(flag==1){
-			
+			var db_pass = null; /* ${sessionScope.udto.pass}; */
+			alert("1111");
 			if(db_pass != txt_passwd){
 				alert("현재 비밀번호가 다릅니다.");
 				$("input[name='passwd']").focus();
@@ -138,11 +134,11 @@
 				$("input[name='passwd_check']").focus();
 				return false;
 			}
-		}else{
-			document.form_userProfile.submit();
 		}
+		
 		// 유효성이 완료되면 전송
 		document.form_userProfile.submit();
+		
 	}
 		
 	
@@ -308,7 +304,7 @@
 </div>
 
 <!-- 모달창 종료 -->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {	
 	
 	 if(${sessionScope.login_val} !=0){ 
@@ -318,7 +314,7 @@ $(document).ready(function() {
 
 });
 </script>	
-	 -->
+	
 	
 	
 </body>
