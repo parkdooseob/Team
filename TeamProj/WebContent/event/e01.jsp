@@ -45,7 +45,7 @@ integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00
 </header>
 
 <!-- 페이지 center-->
-<div class="w3-content w3-padding" style="max-width:1564px">
+<div class="w3-content w3-padding" style="max-width:800px">
 
  <!--내 위치(위쪽여백)-->
   <div class="w3-container w3-padding-16 w3-margin-bottom"  align="center">
@@ -62,8 +62,17 @@ integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00
   </div>
   
   	<!-- 이벤트 -->
-		<img class="w3-image" src="e_img/main_pic.jpg" width="100%">
+		<img class="w3-image" src="e_img/e01.jpg" width="100%">
     <!-- 이벤트 끝 -->
+        
+    <div>
+    	<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+		<a href="event.jsp">
+    		<button href="event.jsp" class="w3-button w3-teal w3-border w3-round-large w3-right">Event list</button>
+		</a>
+    </div>
+    
+    <br/><br/>
     
 </div>
 <!-- center 끝 -->

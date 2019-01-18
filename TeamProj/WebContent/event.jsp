@@ -111,7 +111,7 @@ integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00
       </a>
       <h6 class="w3-border-bottom w3-border-light-grey w3-padding-16">
 			[가입 시 자동증정]</br> 모든 가입고객께 드리는 Share Space의 선물 </br>
-			2019.02.05 ~ 2019.12.05
+			2019.02.05 ~ 2019.12.31
 	  </h6>
 	</div>
     <!-- 이벤트 끝 -->
