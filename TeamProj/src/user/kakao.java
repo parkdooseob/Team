@@ -44,7 +44,7 @@ public class kakao extends HttpServlet {
 		
 		String appKey = "7bed2c2cc35da2f635429b5665085d84";
 		
-		String redirectURI = "http://localhost:8181/TeamProj/kakao";
+		String redirectURI = "http://localhost:8080/TeamProj/kakao";
 		
 		String line = null;
 		

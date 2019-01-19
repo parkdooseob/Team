@@ -71,7 +71,7 @@
 			//ID정규표현식을 이용하여 입력한 ID값이 맞을 경우(통과)
 			$.ajax({
 				type : "POST",
-				url  : "../userEmailCheck.do",
+				url  : "../UserEmailCheck.do",
 				data: {"email": email}, //{parameterName, data} 형식
 				success: function(result){					
 					flag = result;		  	
@@ -108,10 +108,9 @@
 		// 비밀번호 유효성 검증
 		var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
 		
-		if(flag==1){
-			var db_pass = null; /* ${sessionScope.udto.pass}; */
-			alert("1111");
-			if(db_pass != txt_passwd){
+		if(flag==1){			
+			
+			if( ${sessionScope.udto.pass} != txt_passwd){
 				alert("현재 비밀번호가 다릅니다.");
 				$("input[name='passwd']").focus();
 				return false;
@@ -307,9 +306,11 @@
 <script type="text/javascript">
 $(document).ready(function() {	
 	
-	 if(${sessionScope.login_val} !=0){ 
+	 if(${sessionScope.login_val} !=0){		 
 		 $("#email").attr("readonly",false).attr("disabled",true);			
-		 $("#passwd_chage").attr("readonly",false).attr("disabled",true);		
+		 $("#passwd_chage").attr("readonly",false).attr("disabled",true);
+		 $("#email_check").attr("readonly",false).attr("disabled",true);
+		 
 	} 
 
 });

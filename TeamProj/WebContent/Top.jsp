@@ -51,7 +51,7 @@ $(document).ready(function() {
 // 	<!-- 구글 client_secret : Vwl1rm1fi2naT41YevXIP7IB -->
 	$("#google-sign").click(function(){	
 		var popUrl ="https://accounts.google.com/o/oauth2/v2/auth?"
-			+"redirect_uri=http://localhost:8181/TeamProj/google&"
+			+"redirect_uri=http://localhost:8080/TeamProj/google&"
 			+"response_type=code&"			
 			+"client_id=463533794318-unijrkh4odbf94n2pms494toetghdgir.apps.googleusercontent.com&"
 			+"scope=openid%20email&"
@@ -69,7 +69,7 @@ $(document).ready(function() {
 // 	&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code” -->	
 	$("#kakao-sign").click(function(){	
 		var popUrl ="https://kauth.kakao.com/oauth/authorize?client_id=7bed2c2cc35da2f635429b5665085d84"
-			+"&redirect_uri=http://localhost:8181/TeamProj/kakao&response_type=code";	
+			+"&redirect_uri=http://localhost:8080/TeamProj/kakao&response_type=code";	
 			//팝업창에 출력될 페이지 URL
 	
 	var popOption = "width=400, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
@@ -103,14 +103,14 @@ $(document).ready(function() {
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
     <a href="${path}home.jsp" class="w3-bar-item w3-button"><b>SS</b> share space</a>
     <c:set var="email" value="${sessionScope.udto.email }"/>
-    <div class="w3-right w3-hide-small">     
-    		<a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>      
+    <div class="w3-right w3-hide-small">   		      
       <c:choose>
       	<c:when test="${email eq null }">
       		<a href="${path2}userSingUp_auth.jsp" class="w3-bar-item w3-button">회원가입</a>
       		<a href="#home" class="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'">로그인</a><!-- 로그아웃 -->
       	</c:when>
       	<c:otherwise>
+      		<a href="#about" class="w3-bar-item w3-button"><i class="material-icons">stars</i></a>
       		<a href="${path2}userPage.jsp" class="w3-bar-item w3-button">마이페이지</a>
       		<div class="w3-dropdown-click">
       			<button onclick="click_modal()" class="w3-bar-item w3-button">${sessionScope.udto.name }</button>

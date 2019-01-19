@@ -106,7 +106,8 @@ public class UserDAO {
 		
 		return check;
 	}
-
+	
+	// 회원정보 가져오기 메서드
 	public UserDTO getUser(String email) {
 		
 		UserDTO udto = new UserDTO();
@@ -142,7 +143,7 @@ public class UserDAO {
 		
 		return udto;
 	}
-	
+	// 일반회원 가입 메서드
 	public boolean insertUser(UserDTO udto) {
 		boolean result = false;
 		try {
@@ -171,7 +172,7 @@ public class UserDAO {
 		
 		return result;
 	}
-	
+	// ajax 일반회원 이메일 수정시 중복체크 메서드
 	public boolean getEmail(String email) {
 		
 		boolean flag = false;
@@ -237,7 +238,7 @@ public class UserDAO {
 		return result;
 		
 	}
-
+	// 회원 정보 수정시 SNS계정과 일반가입 계정을 나눠서 처리
 	public void userProfileUpdate(String email ,UserDTO udto) {
 		// TODO Auto-generated method stub
 		String sql="";
