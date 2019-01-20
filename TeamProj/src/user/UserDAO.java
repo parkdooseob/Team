@@ -62,7 +62,7 @@ public class UserDAO {
 	// 사용자 로그인시 등록된 계정이 있는지 유무
 	public int userCheck(String email, String pass) {
 		// TODO Auto-generated method stub
-			int check=-1;
+		int check=-1;
 		
 		try {
 			
@@ -150,7 +150,7 @@ public class UserDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT user(email,name,pass,host,point) VALUES(?,?,?,0,0)";
+			String sql = "INSERT INTO user(email,name,pass,host,point) VALUES(?,?,?,0,0)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -167,6 +167,8 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			freeResource();
 		}
 		
 		
@@ -193,7 +195,7 @@ public class UserDAO {
 			
 		
 		} catch (Exception e) {
-			System.out.println("userCheck() 메서드에서 "+e);
+			System.out.println("getEmail() 메서드에서 "+e);
 		} finally {
 			freeResource();
 		}
@@ -202,7 +204,7 @@ public class UserDAO {
 		
 		
 	}
-	// 회원 패스워드 체크
+	// 회원 프로필 수정 중복체크 ajax 메서드
 	public int emailCheck(String email) {
 		// TODO Auto-generated method stub
 		
@@ -231,7 +233,9 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("passCheck() 메서드에서 "+e);
+			System.out.println("emailCheck() 메서드에서 "+e);
+		} finally {
+			freeResource();
 		}
 		
 			
@@ -269,8 +273,191 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			System.out.println("userProfileUpdate() 메서드에서 "+e);
+		} finally {
+			freeResource();
 		}
 		
+		
+	}
+	// 호스트 로그인시 호스트 정보가 있는지 유무
+	public int hostCheck(String host_id, String host_pass) {
+		// TODO Auto-generated method stub
+		int check=-1;		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT host_pass FROM host WHERE host_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, host_id);
+			System.out.println("host_id : "+host_id+" host_pass : "+host_pass);
+			
+			rs = pstmt.executeQuery();
+			
+			System.out.println(pstmt.toString());
+			
+			boolean row = rs.next();
+			
+			System.out.println("row : "+row);
+			
+			if(row){
+				System.out.println("rs.getString('host_pass') : " +rs.getString("host_pass"));
+				if(rs.getString("host_pass").equals(host_pass)){
+					
+					check = 1;
+					
+				}else{
+					
+					check = 0;
+				}
+				
+			}		
+			
+		} catch (Exception e) {
+			System.out.println("hostCheck() 메서드에서 "+e);
+		} finally {
+			freeResource();
+		}
+		
+		
+		
+		return check;
+	}
+	// 호스트 로그인시 호스트 정보 가져오는 메서드
+	public HostDTO getHost(String host_id) {
+		HostDTO hdto = new HostDTO();
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM host WHERE host_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, host_id);		
+			
+			rs = pstmt.executeQuery();		
+			
+			rs.next();		
+			
+			hdto.setHost_id(rs.getString("host_id"));
+			hdto.setEmail(rs.getString("email"));
+			hdto.setHost_pass(rs.getString("host_pass"));
+			hdto.setHost_nic(rs.getString("host_nic"));
+			hdto.setHost_phone(rs.getString("host_phone"));
+			hdto.setHost_level(rs.getInt("host_level"));
+			hdto.setPoint(rs.getInt("point"));
+			
+			
+		} catch (Exception e) {
+			System.out.println("getHost() 메서드에서 "+e);
+		} finally {
+			freeResource();
+		}
+		
+		
+		return hdto;
+	}
+	// 호스트 프로필 수정 중복체크 버튼 ajax
+	public int hostIdCheck(String host_id) {
+		int result=-1;		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM host WHERE host_id = ?";			
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, host_id);
+			
+			rs = pstmt.executeQuery();	
+			
+			if(rs.next()){
+				result = 0;
+			}
+			
+			System.out.println("패스워드 체크 다오  : "+ rs.getString("host_id"));
+						
+			
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("hostIdCheck() 메서드에서 "+e);
+		} finally {
+			freeResource();
+		}
+		
+			
+		return result;	
+	}
+
+	public void hostProfileUpdate(String host_id, HostDTO hdto) {
+		// TODO Auto-generated method stub		
+		try {
+			
+			con = ds.getConnection();
+			System.out.println("다오왔다 :"+hdto.getHost_pass());		
+			
+			String sql = "UPDATE host SET host_id=?,host_pass=?,host_nic=?,host_phone=? WHERE host_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, hdto.getHost_id());
+			pstmt.setString(2, hdto.getHost_pass());
+			pstmt.setString(3, hdto.getHost_nic());
+			pstmt.setString(4, hdto.getHost_phone());
+			pstmt.setString(5, host_id);
+			
+			System.out.println(pstmt.toString());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("hostProfileUpdate() 메서드에서 "+e);
+		} finally {
+			freeResource();
+		}
+		
+	}
+
+	public boolean insertHost(HostDTO hdto) {
+		// TODO Auto-generated method stub
+		boolean result=false;
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "INSERT INTO host(host_id,email,host_pass,host_nic,host_phone,host_level,point) "
+					+ "VALUES(?,?,?,?,?,0,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, hdto.getHost_id());
+			pstmt.setString(2, hdto.getEmail());
+			pstmt.setString(3, hdto.getHost_pass());
+			pstmt.setString(4, hdto.getHost_nic());
+			pstmt.setString(5, hdto.getHost_phone());
+			pstmt.setInt(6, hdto.getPoint());
+			
+			System.out.println(pstmt.toString());
+			
+			int row = pstmt.executeUpdate();
+			
+			if(row >= 1){
+				result = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("insertHost() 메서드에서"+e);
+		} finally {
+			freeResource();
+		}
+		
+		return result;
 		
 	}
 }

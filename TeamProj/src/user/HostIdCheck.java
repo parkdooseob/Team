@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UserEmailCheck.do")
-public class UserEmailCheck extends HttpServlet {
+@WebServlet("/HostIdCheck.do")
+public class HostIdCheck extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPro(request, response);
@@ -20,12 +20,12 @@ public class UserEmailCheck extends HttpServlet {
 		doPro(request, response);
 	}
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		System.out.println("ajax email: "+email);		
+		String host_id = request.getParameter("host_id");
+		System.out.println("ajax host_id: "+host_id);		
 		
 		UserDAO udao = new UserDAO();
 		
-		int result = udao.emailCheck(email);
+		int result = udao.hostIdCheck(host_id);
 		
 		System.out.println(result);
 		response.setContentType("text/html; charset=utf-8");

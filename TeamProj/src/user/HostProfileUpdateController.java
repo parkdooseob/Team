@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/UserProfileUpdateController.do")
-public class UserProfileUpdateController extends HttpServlet {
+@WebServlet("/HostProfileUpdateController.do")
+public class HostProfileUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPro(request, response);
 	}
@@ -22,34 +22,25 @@ public class UserProfileUpdateController extends HttpServlet {
 	}
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UserDTO udto = new UserDTO();
+		HostDTO hdto = new HostDTO();
 		UserDAO udao = new UserDAO();
 		// System.out.println("여기는 일반회원정보 수정");
 		HttpSession session = request.getSession();
-		UserDTO session_dto = (UserDTO)session.getAttribute("udto");
-		// 일반회원 0, 구글 1, 카카오 2
-		// SNS계정은 닉네임만 수정할 수 있도록 분기 처리
-		int userflag = (int)session.getAttribute("login_val");
+		HostDTO session_dto = (HostDTO)session.getAttribute("hdto");
 		
-		/*System.out.println("userflag : "+userflag);*/
-		
-		// 일반회원이면 전체 변경
-		if(userflag ==0){
-			
-			udto.setEmail(request.getParameter("email"));
-			udto.setName(request.getParameter("nick_name"));
-			if(request.getParameter("passwd_ch") != null){
-				udto.setPass(request.getParameter("passwd_ch"));				
-			}else{
-				udto.setPass(session_dto.getPass());
-			}		
-			
+		// 호스트 회원 정보 수정		
+		hdto.setHost_id(request.getParameter("host_id"));
+		hdto.setHost_nic(request.getParameter("host_nic"));
+		hdto.setHost_phone(request.getParameter("host_phone"));
+		// 비밀번호 변경이 일어 나면
+		if(request.getParameter("passwd_ch") != null){		
+			hdto.setHost_pass(request.getParameter("passwd_ch"));				
 		}else{
-			
-			udto.setName(request.getParameter("nick_name"));						
-		}
+			// 변경이 없으면 세션에 패스워드
+			hdto.setHost_pass(session_dto.getHost_pass());
+		}			
 		
-		udao.userProfileUpdate(session_dto.getEmail(),udto);
+		udao.hostProfileUpdate(session_dto.getHost_id(), hdto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("./home.jsp");
 		

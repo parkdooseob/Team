@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<style type="text/css"></style> 
+<style type="text/css">
+</style> 
 <script type="text/javascript">	
 	var flag=0;
 	
@@ -44,54 +45,55 @@
 				$("#money").val(i-10000);				
 			}
 		});		
-		 
-		$("#email").keyup(function(){
+		
+		$("#host_id").keyup(function(){
 			$("#btn_submit").attr("disabled",true);
-			$("#email_check").attr("disabled",false);
+			$("#host_id_check").attr("disabled",false);
 			$("#p_alert").text("");
 		});		
 		
-		$("#email_check").click(function(){	 
+		 
+		$("#host_id_check").click(function(){	 
 			var flag = -1;		
-			var email = $("#email").val();
-			var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+			var host_id = $("#host_id").val();
+			var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			
 			$("#btn_submit").attr("disabled",true);
 			
 			
-			if(!getMail.test(email) || email ==""){
+			if(!getCheck.test(host_id) || host_id ==""){
 				alert("형식에 맞게 입력해주세요!");
-				 $("#email").focus();
+				 $("#host_id").focus();
 				 return false;
 			}
 			
-			if(email == "${sessionScope.udto.email }"){
-				alert("현재 이메일과 동일합니다.");
-				 $("#email").focus();
+			if(host_id == "${sessionScope.hdto.host_id }"){
+				alert("현재 아이디와 동일합니다.");
+				 $("#host_id").focus();
 				 $("#btn_submit").attr("disabled",false);
 				 return false;
 			}
 			
 			
-			
+			alert("통과");
 			//ID정규표현식을 이용하여 입력한 ID값이 맞을 경우(통과)
 			$.ajax({
 				type : "POST",
-				url  : "../UserEmailCheck.do",
-				data: {"email": email}, //{parameterName, data} 형식
+				url  : "../HostIdCheck.do",
+				data: {"host_id": host_id}, //{parameterName, data} 형식
 				success: function(result){					
 					flag = result;		  	
 					
 					if(flag==0){
-						$("#p_alert").text("*등록된 이메일이 존재 합니다");
+						$("#p_alert").text("*등록된 아이디가 존재 합니다");
 						$("#p_alert").css("color","red");
 						$("#btn_submit").attr("disabled",true);
 						 return false;
 					}else if(flag==-1){
-						$("#p_alert").text("*사용 가능한 이메일 입니다.");
+						$("#p_alert").text("*사용 가능한 아이디입니다.");
 						$("#p_alert").css("color","blue");
 						$("#btn_submit").attr("disabled",false);
-						$("#email_check").attr("disabled",true);
+						$("#host_id_check").attr("disabled",true);
 						 return false;
 					}		 		
 					
@@ -111,7 +113,7 @@
 	}); /*  ready 종료 */	
 	
 	function func_check(){				
-		var txt_passwd = $("input[name='passwd']").val();
+		var txt_passwd = $("input[name='host_pass']").val();
 		var txt_passwd_ch = $("input[name='passwd_ch']").val();
 		var txt_passwd_check = $("input[name='passwd_check']").val();
 		// 비밀번호 유효성 검증
@@ -119,9 +121,9 @@
 		
 		if(flag==1){			
 			
-			if( "${sessionScope.udto.pass}" != txt_passwd){
+			if( "${sessionScope.hdto.host_pass}" != txt_passwd){
 				alert("현재 비밀번호가 다릅니다.");
-				$("input[name='passwd']").focus();
+				$("input[name='host_pass']").focus();
 				return false;
 			}
 			
@@ -145,7 +147,7 @@
 		}
 		
 		// 유효성이 완료되면 전송
-		document.form_userProfile.submit();
+		document.form_hostProfile.submit();
 		
 	}
 		
@@ -154,58 +156,80 @@
 </script>
 </head>
 <body>
-
+<div class="w3-container">
 	<div class="w3-row">				
-		<div class="w3-col m8 w3-dark-grey w3-left">
-			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge fa fa-user"></i>&nbsp;&nbsp;&nbsp;프로필 수정</p> 
+		<div class="w3-col m8 w3-orange w3-left">
+			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge fa fa-user"></i>&nbsp;&nbsp;&nbsp;호스트 프로필 수정</p> 
 		</div>		
 	</div>
 	<!-- 정보 수정 시작 -->
-	<form action="../UserProfileUpdateController.do" method="post" name="form_userProfile">	
+	<form action="../HostProfileUpdateController.do" method="post" name="form_hostProfile">	
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			이메일
+			호스트 아이디
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m6">
-			<input type="text" id="email" class="w3-input" placeholder="email" name="email" value="${sessionScope.udto.email }">
+			<input type="text" id="host_id" class="w3-input" placeholder="email" name="host_id" value="${sessionScope.hdto.host_id }">
 		</div>
 		<div class="w3-col m2">
-			<button type="button" class="w3-button w3-white w3-border w3-border-red w3-round-large" id="email_check">중복확인</button>	
+			<button type="button" class="w3-button w3-white w3-border w3-border-red w3-round-large" id="host_id_check">중복확인</button>	
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● SNS계정은 이메일이 없을 수도 있습니다.(변경시 이메일 형식에 맞게 입력) </small>
+			<small>● 호스트 아이디 변경은 일반계정과는 무관합니다. </small>
 		</div>	
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >
 		<div class="w3-col m12" id="p_alert"></div>
 	</div>
+	
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			닉네임
+			호스트 닉네임
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
-			<input type="text"  class="w3-input" placeholder="닉네임" name="nick_name" value="${sessionScope.udto.name }">
+			<input type="text"  class="w3-input" placeholder="닉네임" name="host_nic" value="${sessionScope.hdto.host_nic }">
 		</div>
 		<div class="w3-col m4"></div>
 	</div>	
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● 공개 프로필에는 닉네임만 표시됩니다. </small>
+			<small>● 예약 회원들에게 보여질 닉네임 입니다. </small>
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
+	
+	<div class="w3-row w3-margin-top" ></div>
+	<div class="w3-row" >								
+		<div class="w3-col m8">
+			호스트 휴대전화 번호
+		</div>
+		<div class="w3-col m4"></div>
+	</div>
+	<div class="w3-row" >								
+		<div class="w3-col m8">
+			<input type="text"  class="w3-input" placeholder="휴대전화 번호" name="host_phone" value="${sessionScope.hdto.host_phone }" maxlength="11">
+		</div>
+		<div class="w3-col m4"></div>
+	</div>	
+	<div class="w3-row">								
+		<div class="w3-col m8">
+			<small>● 예약 회원들에게 제공될 전화번호 입니다. </small>
+		</div>
+		<div class="w3-col m4"></div>
+	</div>
+	
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row" >								
 		<div class="w3-col m8">
@@ -215,7 +239,7 @@
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m6">
-			<input type="password" class="w3-input" placeholder="현재 비밀번호" name="passwd" value="${sessionScope.udto.pass }" disabled="disabled">
+			<input type="password" class="w3-input" placeholder="현재 비밀번호" name="host_pass" value="${sessionScope.hdto.host_pass }" disabled="disabled">
 		</div>
 		<div class="w3-col m2">	
 			<button type="button" class="w3-button w3-white w3-border w3-border-red w3-round-large" id="passwd_chage">비밀번호 변경</button>			
@@ -224,7 +248,7 @@
 	</div>
 	<div class="w3-row">								
 		<div class="w3-col m8">
-			<small>● SNS계정은 비밀번호가 없을 수도 있습니다</small>
+			<small>● 호스트 비밀번호 입니다.</small>
 		</div>
 		<div class="w3-col m4"></div>
 	</div>
@@ -266,13 +290,13 @@
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row w3-margin-top" ></div>
 	<div class="w3-row">				
-		<div class="w3-col m8 w3-dark-grey w3-left">
+		<div class="w3-col m8 w3-orange w3-left">
 			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge far fa-credit-card"></i>&nbsp;&nbsp;&nbsp;내 포인트</p> 
 		</div>		
 	</div>
 	<div class="w3-row" >								
 		<div class="w3-col m7">
-			<input type="text" class="w3-input" placeholder="포인트" name="point" value="${sessionScope.udto.point }" readonly="readonly">
+			<input type="text" class="w3-input" placeholder="포인트" name="point" value="${sessionScope.hdto.point }" disabled="disabled">
 		</div>
 		<div class="w3-col m1"><p><small>POINT</small>(원)<p></div>
 		<div class="w3-col m4"></div>
@@ -282,6 +306,7 @@
 			<input type="submit" class="w3-button w3-block w3-red"  onclick="document.getElementById('credit').style.display='block'" value="포인트 충전 하기">
 		</div>	
 	</div>
+</div>	
 	<!-- 모달창 시작 -->
 <div class="w3-container">  
   <div id="credit" class="w3-modal">
@@ -311,21 +336,6 @@
   </div>
 </div>
 
-<!-- 모달창 종료 -->
-<script type="text/javascript">
-$(document).ready(function() {	
-	
-	 if(${sessionScope.login_val} !=0){		 
-		 $("#email").attr("readonly",false).attr("disabled",true);			
-		 $("#passwd_chage").attr("readonly",false).attr("disabled",true);
-		 $("#email_check").attr("readonly",false).attr("disabled",true);
-		 
-	} 
-
-});
-</script>	
-	
-	
-	
+<!-- 모달창 종료 -->	
 </body>
 </html>

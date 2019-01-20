@@ -8,32 +8,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-@WebServlet("/UserEmailCheck.do")
-public class UserEmailCheck extends HttpServlet {
-
+import javax.servlet.http.HttpSession;
+@WebServlet("/HostLogoutController.do")
+public class HostLogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPro(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPro(request, response);
 	}
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		System.out.println("ajax email: "+email);		
+		System.out.println("호스트 로그아웃 들어왔다");
 		
-		UserDAO udao = new UserDAO();
+		HttpSession session = request.getSession();
 		
-		int result = udao.emailCheck(email);
+		session.invalidate();
 		
-		System.out.println(result);
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println(result);
+		out.println("<script>");
+		out.println("alert('로그아웃 되었습니다')");
+		out.println("location.href='home.jsp'");
+		out.println("</script>");
+		out.close();
+		return;
 		
 	}
-
 }
