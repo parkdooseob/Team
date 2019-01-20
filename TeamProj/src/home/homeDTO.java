@@ -1,7 +1,30 @@
 package home;
 
 public class homeDTO {
+	
+	/**호스트*/
+	private String host_id;
+	private String host_nic;
+	private String host_level;
+	
 	/**공간*/
+	//1.호스트 번호
+	private String room_no;
+	private String content;
+	private String post;
+	private String room;
+	private int people;
+	
+	/**공간 위치*/
+	private String a_ci;
+	
+	/**사진*/
+	private String pic1;
+	
+	/**예약*/
+	private int book_no;
+	
+	
 	
 	/*
 	 CREATE TABLE `hosting` (

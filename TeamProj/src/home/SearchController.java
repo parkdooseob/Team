@@ -21,7 +21,14 @@ public class SearchController extends HttpServlet {
 	protected void Process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
-//		String ;
+		String type = request.getParameter("type");//공간 타입
+		String location = request.getParameter("location");//위치
+		String date = request.getParameter("date");//날짜
+		String number = request.getParameter("number");//수용인원수
+		
+		System.out.println(type);
+		System.out.println(date);
+		
 	}
 
 	
