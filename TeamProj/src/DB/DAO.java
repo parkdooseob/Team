@@ -16,15 +16,11 @@ public class DAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	//Ä¿³Ø¼ÇÇ®¿¡¼­ Ä¿³Ø¼Ç°´Ã¼¸¦ ¾ò´Â ¸Ş¼Òµå
 	public void getCon(){		
 		try {
-			//WAS¼­¹ö¿Í ¿¬°áµÈ ÇÁ·ÎÁ§Æ®ÀÇ ¸ğµç Á¤º¸¸¦ °¡Áö°í ÀÖ´Â ÄÁÅØ½ºÆ® °´Ã¼ ¾ò±â
 			Context init = new InitialContext();
-			//¿¬°áµÈ WAS¼­¹ö¿¡¼­ DataSource(Ä¿³Ø¼ÇÇ® °ü¸® °´Ã¼) °Ë»öÇØ¼­ °¡Á®¿À±â
 			DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/jspbeginner");
-			//DataSource(Ä¿³Ø¼ÇÇ®)¿¡¼­ DB¿Í ¹Ì¸® ¿¬°á Á¤º¸¸¦ °¡Áö°í ÀÖ´Â Á¢¼Ó °´Ã¼ ¾ò±â 
-			con = ds.getConnection(); //DBÁ¢¼Ó
+			con = ds.getConnection(); //DBï¿½ï¿½ï¿½ï¿½
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -38,7 +34,7 @@ public class DAO {
 		
 		try {
 			
-			// hosting Å×ÀÌºí 
+			// hosting í…Œì´ë¸”
 			String sql ="insert into hosting values(?,null,?,?,?,?,?,?,?,?)";
 									
 			pstmt =	con.prepareStatement(sql);
@@ -54,9 +50,9 @@ public class DAO {
 			pstmt.setString(9, dto.getaTime());
 			
 			pstmt.executeUpdate();
-			System.out.println("hostingÅ×ÀÌºí insert¿Ï·á");
+			System.out.println("hostingï¿½ï¿½ï¿½Ìºï¿½ insertï¿½Ï·ï¿½");
 			
-			// hosting_bill Å×ÀÌºí
+			// hosting_bill í…Œì´ë¸”
 			sql ="insert into hosting_bill values(null,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -65,9 +61,9 @@ public class DAO {
 			pstmt.setInt(2, dto1.getRoom_sum());		
 			
 			pstmt.executeUpdate();
-			System.out.println("hosting_billÅ×ÀÌºí insert¿Ï·á");
+			System.out.println("hosting_billï¿½ï¿½ï¿½Ìºï¿½ insertï¿½Ï·ï¿½");
 			
-			// Hosting_Option Å×ÀÌºí
+			// Hosting_Option í…Œì´ë¸”
 			sql = "insert into hosting_option values(null,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -78,9 +74,9 @@ public class DAO {
 			pstmt.setInt(4, dto2.getToilet());
 			pstmt.setString(5, dto2.getEtc());
 			pstmt.executeUpdate();
-			System.out.println("hosting_optionÅ×ÀÌºí insert¿Ï·á");
+			System.out.println("hosting_optionï¿½ï¿½ï¿½Ìºï¿½ insertï¿½Ï·ï¿½");
 			
-			//Hosting_pic Å×ÀÌºí
+			//Hosting_pic í…Œì´ë¸”
 			sql ="insert into hosting_pic values(null,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -89,9 +85,9 @@ public class DAO {
 			pstmt.setString(2, dto3.getPic2());
 			pstmt.setString(3, dto3.getPic3());
 			pstmt.executeUpdate();
-			System.out.println("hosting_picÅ×ÀÌºí insert¿Ï·á");
+			System.out.println("hosting_picï¿½ï¿½ï¿½Ìºï¿½ insertï¿½Ï·ï¿½");
 			
-			//Hosting_address Å×ÀÌºí
+			//Hosting_address í…Œì´ë¸”
 			sql = "insert into hosting_address values(?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);			
@@ -104,12 +100,12 @@ public class DAO {
 			pstmt.setString(6, dto4.getA_etc_address());
 			
 			pstmt.executeUpdate();
-			System.out.println("hosting_addressÅ×ÀÌºí insert¿Ï·á");
+			System.out.println("hosting_addressï¿½ï¿½ï¿½Ìºï¿½ insertï¿½Ï·ï¿½");
 
 			
 			
 		} catch (Exception e) {
-			System.out.println("insert ¿¡¼­ ¿À·ù :" +e);
+			System.out.println("insert ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ :" +e);
 		}finally {
 						
 			try {
@@ -147,7 +143,7 @@ public class DAO {
 					rs=	pstmt.executeQuery();
 					
 					while(rs.next()) {
-						SelectDTO dto = new SelectDTO();//ÀÌ À§Ä¡¿¡ Á¸ÀçÇØ¾ßÇÔ . try ¹Û¿¡ ¼±¾ğÇÒ °æ¿ì °°Àº °´Ã¼·Î Ãë±ŞÇØ set°ªÀÌ ¸¶Áö¸· for¹®°ªÀÓ
+						SelectDTO dto = new SelectDTO();
 						
 						dto.setaTime(rs.getString("aTime"));
 						dto.setContent(rs.getString("content"));
@@ -161,13 +157,13 @@ public class DAO {
 					}else if(num ==2){
 						String sql ="";
 						
-						sql="select * from hosting natural join hosting_bill where room = 'Ä«Æä' ";
+						sql="select * from hosting natural join hosting_bill where room = 'ì¹´í˜' ";
 						
 						pstmt = con.prepareStatement(sql);
 					rs=	pstmt.executeQuery();
 					
 					while(rs.next()) {
-						SelectDTO dto = new SelectDTO();//ÀÌ À§Ä¡¿¡ Á¸ÀçÇØ¾ßÇÔ . try ¹Û¿¡ ¼±¾ğÇÒ °æ¿ì °°Àº °´Ã¼·Î Ãë±ŞÇØ set°ªÀÌ ¸¶Áö¸· for¹®°ªÀÓ
+						SelectDTO dto = new SelectDTO();
 						
 						dto.setaTime(rs.getString("aTime"));
 						dto.setContent(rs.getString("content"));
@@ -182,13 +178,13 @@ public class DAO {
 					}else if(num == 3){
 						String sql ="";
 						
-						sql="select * from hosting natural join hosting_bill where room = '°­ÀÇ½Ç' ";
+						sql="select * from hosting natural join hosting_bill where room = 'ê°•ì˜ì‹¤' ";
 						
 						pstmt = con.prepareStatement(sql);
 					rs=	pstmt.executeQuery();
 					
 					while(rs.next()) {
-						SelectDTO dto = new SelectDTO();//ÀÌ À§Ä¡¿¡ Á¸ÀçÇØ¾ßÇÔ . try ¹Û¿¡ ¼±¾ğÇÒ °æ¿ì °°Àº °´Ã¼·Î Ãë±ŞÇØ set°ªÀÌ ¸¶Áö¸· for¹®°ªÀÓ
+						SelectDTO dto = new SelectDTO();
 						
 						dto.setaTime(rs.getString("aTime"));
 						dto.setContent(rs.getString("content"));
@@ -203,13 +199,13 @@ public class DAO {
 					}else if(num ==4){
 						String sql ="";
 						
-						sql="select * from hosting natural join hosting_bill where room = '·ë' ";
+						sql="select * from hosting natural join hosting_bill where room = 'ë£¸' ";
 						
 						pstmt = con.prepareStatement(sql);
 					rs=	pstmt.executeQuery();
 					
 					while(rs.next()) {
-						SelectDTO dto = new SelectDTO();//ÀÌ À§Ä¡¿¡ Á¸ÀçÇØ¾ßÇÔ . try ¹Û¿¡ ¼±¾ğÇÒ °æ¿ì °°Àº °´Ã¼·Î Ãë±ŞÇØ set°ªÀÌ ¸¶Áö¸· for¹®°ªÀÓ
+						SelectDTO dto = new SelectDTO();
 						
 						dto.setaTime(rs.getString("aTime"));
 						dto.setContent(rs.getString("content"));
@@ -225,7 +221,7 @@ public class DAO {
 											
 						
 					} catch (Exception e) {
-						System.out.println("select ¿¡¼­ ¿À·ù :" +e);
+						System.out.println("select ì—ì„œ ì˜¤ë¥˜ :" +e);
 					}finally {
 									
 						try {
