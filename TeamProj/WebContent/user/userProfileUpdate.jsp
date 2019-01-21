@@ -68,11 +68,11 @@
 			if(email == "${sessionScope.udto.email }"){
 				alert("현재 이메일과 동일합니다.");
 				 $("#email").focus();
-				 $("#btn_submit").attr("disabled",false);
+				 $("#btn_submit").attr("disabled",true);
 				 return false;
 			}
 			
-			
+			alert("클릭");
 			
 			//ID정규표현식을 이용하여 입력한 ID값이 맞을 경우(통과)
 			$.ajax({

@@ -70,7 +70,7 @@
 			if(host_id == "${sessionScope.hdto.host_id }"){
 				alert("현재 아이디와 동일합니다.");
 				 $("#host_id").focus();
-				 $("#btn_submit").attr("disabled",false);
+				 $("#btn_submit").attr("disabled",true);
 				 return false;
 			}
 			
