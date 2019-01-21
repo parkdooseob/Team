@@ -20,7 +20,7 @@ public class DAO {
 		try {
 			Context init = new InitialContext();
 			DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/jspbeginner");
-			con = ds.getConnection(); //DB����
+			con = ds.getConnection(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -50,7 +50,7 @@ public class DAO {
 			pstmt.setString(9, dto.getaTime());
 			
 			pstmt.executeUpdate();
-			System.out.println("hosting���̺� insert�Ϸ�");
+			System.out.println("hosting테이블 insert완료");
 			
 			// hosting_bill 테이블
 			sql ="insert into hosting_bill values(null,?,?)";
@@ -61,7 +61,7 @@ public class DAO {
 			pstmt.setInt(2, dto1.getRoom_sum());		
 			
 			pstmt.executeUpdate();
-			System.out.println("hosting_bill���̺� insert�Ϸ�");
+			System.out.println("hosting_bill테이블 insert완료");
 			
 			// Hosting_Option 테이블
 			sql = "insert into hosting_option values(null,?,?,?,?,?)";
@@ -74,7 +74,7 @@ public class DAO {
 			pstmt.setInt(4, dto2.getToilet());
 			pstmt.setString(5, dto2.getEtc());
 			pstmt.executeUpdate();
-			System.out.println("hosting_option���̺� insert�Ϸ�");
+			System.out.println("hosting_option테이블 insert완료");
 			
 			//Hosting_pic 테이블
 			sql ="insert into hosting_pic values(null,?,?,?)";
@@ -85,7 +85,7 @@ public class DAO {
 			pstmt.setString(2, dto3.getPic2());
 			pstmt.setString(3, dto3.getPic3());
 			pstmt.executeUpdate();
-			System.out.println("hosting_pic���̺� insert�Ϸ�");
+			System.out.println("hosting_pic테이블 insert완료");
 			
 			//Hosting_address 테이블
 			sql = "insert into hosting_address values(?,?,?,?,?,?)";
@@ -100,12 +100,12 @@ public class DAO {
 			pstmt.setString(6, dto4.getA_etc_address());
 			
 			pstmt.executeUpdate();
-			System.out.println("hosting_address���̺� insert�Ϸ�");
+			System.out.println("hosting_address테이블 insert완료");
 
 			
 			
 		} catch (Exception e) {
-			System.out.println("insert ���� ���� :" +e);
+			System.out.println("insert 에서 오류 :" +e);
 		}finally {
 						
 			try {
