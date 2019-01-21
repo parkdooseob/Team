@@ -22,7 +22,7 @@
 		<div class="w3-row w3-margin-top"></div>
 		<div class="w3-row w3-margin-top"></div>	
 		<div class="w3-row w3-margin-top"></div>
-		<h1 class="w3-center  w3-margin-top">회원 가입</h1>
+		<h1 class="w3-center  w3-margin-top"><b>SS</b> share space 회원 가입</h1>
 		
 		<div class="w3-row w3-margin-top"></div>
 		<div class="w3-row w3-margin-top">

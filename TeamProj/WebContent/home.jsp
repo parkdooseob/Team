@@ -310,9 +310,9 @@ letter-spacing: 1px;
   </div>
   
 <!-- JSTL 로그인  시작 -->
-<c:set var="email" value="${sessionScope.udto.email }"/>
+<c:set var="host_id" value="${sessionScope.hdto.host_id }"/>
    <c:choose>
-      	<c:when test="${email eq null }">
+      	<c:when test="${host_id eq null }">
 <!-- JSTL 로그인  종료 -->
      
   <!-- 버튼(일반회원) -->
