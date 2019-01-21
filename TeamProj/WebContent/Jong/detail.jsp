@@ -1,12 +1,12 @@
 <%@page import="DB.DAO"%>
 <%@page import="DB.SelectDTO"%>
 <%@page import="java.util.Vector"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <script
@@ -93,19 +93,19 @@ $(document).ready(function() {
 			
 				<div class="w3-bar" style="width: 100%; position: fixed; z-index: 9999; height:80px;">
 				  <div class="w3-bar w3-green">
-				  	<div class="w3-bar-item">ÆÀÀå´Ô</div></div>
+				  	<div class="w3-bar-item">íŒ€ìž¥ë‹˜</div></div>
 				  <div class="w3-bar w3-white " id="nav2" style="border-bottom:1px solid;">
-				  	<div class="w3-bar-item"><a href="detailPageController.do?a=1">ÀüÃ¼</a></div>
-				  	<div class="w3-bar-item"><a href="detailPageController.do?a=2">Ä«Æä</a></div>
-				  	<div class="w3-bar-item"><a href="detailPageController.do?a=3">°­ÀÇ½Ç</a></div>
-				  	<div class="w3-bar-item"><a href="detailPageController.do?a=4">·ë</a></div>
+				  	<div class="w3-bar-item"><a href="detailPageController.do?a=1">ì „ì²´</a></div>
+				  	<div class="w3-bar-item"><a href="detailPageController.do?a=2">ì¹´íŽ˜</a></div>
+				  	<div class="w3-bar-item"><a href="detailPageController.do?a=3">ê°•ì˜ì‹¤</a></div>
+				  	<div class="w3-bar-item"><a href="detailPageController.do?a=4">ë£¸</a></div>
 				  </div>
 				</div>	
 				
 				
 				
-			<!-- ¿ÞÂÊ ¿µ¿ª , ¿À¸¥ÂÊ ¿µ¿ª ½ÃÀÛ -->
-			<!-- ÁÂÃø ¿µ¿ª  -->
+			<!-- ì™¼ìª½ ì˜ì—­ , ì˜¤ë¥¸ìª½ ì˜ì—­ ì‹œìž‘ -->
+			<!-- ì¢Œì¸¡ ì˜ì—­  -->
 			<div style="float: left; width: 50%; margin-top: 80px">
 			
 		
@@ -131,24 +131,24 @@ $(document).ready(function() {
 							<div style="position: absolute; top: 0px;">
 								<h1 style="margin-bottom: -3px;"><%= dto.getTitle() %></h1>
 								<div class="starRev">
-								  <span class="starR1 on">º°1_¿ÞÂÊ</span>
-								  <span class="starR2">º°1_¿À¸¥ÂÊ</span>
-								  <span class="starR1">º°2_¿ÞÂÊ</span>
-								  <span class="starR2">º°2_¿À¸¥ÂÊ</span>
-								  <span class="starR1">º°3_¿ÞÂÊ</span>
-								  <span class="starR2">º°3_¿À¸¥ÂÊ</span>
-								  <span class="starR1">º°4_¿ÞÂÊ</span>
-								  <span class="starR2">º°4_¿À¸¥ÂÊ</span>
-								  <span class="starR1">º°5_¿ÞÂÊ</span>
-								  <span class="starR2">º°5_¿À¸¥ÂÊ</span>
-								  <p style="font-size: 24px; color: gray; display: inline;">&nbsp;&nbsp; ÈÄ±â : n°³</p>
+								  <span class="starR1 on">ë³„1_ì™¼ìª½</span>
+								  <span class="starR2">ë³„1_ì˜¤ë¥¸ìª½</span>
+								  <span class="starR1">ë³„2_ì™¼ìª½</span>
+								  <span class="starR2">ë³„2_ì˜¤ë¥¸ìª½</span>
+								  <span class="starR1">ë³„3_ì™¼ìª½</span>
+								  <span class="starR2">ë³„3_ì˜¤ë¥¸ìª½</span>
+								  <span class="starR1">ë³„4_ì™¼ìª½</span>
+								  <span class="starR2">ë³„4_ì˜¤ë¥¸ìª½</span>
+								  <span class="starR1">ë³„5_ì™¼ìª½</span>
+								  <span class="starR2">ë³„5_ì˜¤ë¥¸ìª½</span>
+								  <p style="font-size: 24px; color: gray; display: inline;">&nbsp;&nbsp; í›„ê¸° : nê°œ</p>
 								</div>
 							</div>
 							<div style="margin-top: 50px;">
-								<p style="margin-bottom: 0px"><b>´ë½Ç</b>&nbsp;&nbsp; ¿µ¾÷ ½ÃÀÛ½Ã°£:<%=dto.getaTime()%> &nbsp;&nbsp; <img alt="¿¹¾à°¡" src="re.JPG">&nbsp;&nbsp; <span style="font-size: 28px;"><%=dto.getRoom_sum() %></span></p>
+								<p style="margin-bottom: 0px"><b>ëŒ€ì‹¤</b>&nbsp;&nbsp; ì˜ì—… ì‹œìž‘ì‹œê°„:<%=dto.getaTime()%> &nbsp;&nbsp; <img alt="ì˜ˆì•½ê°€" src="re.JPG">&nbsp;&nbsp; <span style="font-size: 28px;"><%=dto.getRoom_sum() %></span></p>
 							</div>
 							<div>
-								<p><b>Âü°í»çÇ×</b></p>
+								<p><b>ì°¸ê³ ì‚¬í•­</b></p>
 								<%=dto.getContent() %>
 							</div>
 							
@@ -163,7 +163,7 @@ $(document).ready(function() {
 				</table>
 			
 			</div>
-			<!-- ¿À¸¥ÂÊ ¿µ¿ª ½ÃÀÛ -->
+			<!-- ì˜¤ë¥¸ìª½ ì˜ì—­ ì‹œìž‘ -->
 			<div style="width: 50%; position: fixed; right: 0; margin-top: 80px; height:100%">
 					
 					<div id="map" style="width:100%; height:100%;"></div>
