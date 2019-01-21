@@ -211,7 +211,7 @@ public class insertBoardController extends HttpServlet {
 			dao.insert(dto,dto1,dto2,dto3,dto4);
 			
 		RequestDispatcher dis =		
-					request.getRequestDispatcher("detail.jsp");
+					request.getRequestDispatcher("TeamProj/WebContent/detail.jsp");
 		
 		dis.forward(request, response);
 			
