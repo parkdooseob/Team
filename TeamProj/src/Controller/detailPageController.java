@@ -27,7 +27,7 @@ public class detailPageController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		int a = Integer.parseInt(request.getParameter("a"));
-		RequestDispatcher dis = request.getRequestDispatcher("detail.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("Jong/detail.jsp");
 		DAO dao = new DAO();
 
 		if(a == 1) {

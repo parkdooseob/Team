@@ -135,14 +135,12 @@ function setValue(obj, target){
 
 <style>
 body{
-
-font-family: "Nanum Barun Gothic"; 
-letter-spacing: 1px;
- 
+	font-family: "Nanum Barun Gothic"; 
+	letter-spacing: 1px;
 }
 
-#show{
-	border: 1px solid #f2f2f2;
+#btn{
+	margin-bottom: 50px;
 }
 
 </style>
@@ -472,25 +470,16 @@ letter-spacing: 1px;
 	      </div>
       </a>
     </div>
-    
-<!--     <div class="w3-col l3 w3-margin-bottom"> -->
-<!--       <a href="#" class="w3-btn" style="padding: 0px"> -->
-<!-- 	      <div class="w3-display-container"> -->
-<!-- 		     <div class="w3-display-topleft w3-black w3-padding">Barn House</div> -->
-<!-- 		     <img src="img/room04.jpg" alt="House" style="width:100%">  -->
-<!-- 	      </div> -->
-<!--       </a> -->
-<!--     </div> -->
-  </div>
+   </div>
 
+<!-- Slideshow -->
+<div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">이벤트</h3> 
+</div>
 
-
-
- <!-- Slideshow -->
- <hr/>
   <div id="show" class="w3-container">
     <div class="w3-display-container mySlides">
-      <img src="event/e_img/show1.jpg" style="width:100%; height:30%;">
+      <img src="img/event02.jpg" style="width:100%; height:30%;">
       <div class="w3-display-topleft w3-container w3-padding-32">
         <span class="w3-blue w3-padding-large w3-animate-bottom">Lorem ipsum</span>
       </div>
@@ -508,8 +497,8 @@ letter-spacing: 1px;
       </div>
     </div>
 
-    <!-- Slideshow next/previous buttons -->
-    <div class="w3-container w3-white w3-padding w3-xlarge">
+    <!-- Slideshow next/previous buttons --> 
+    <div id="btn" class="w3-container w3-white w3-padding w3-xlarge">
       <div class="w3-left w3-white" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
       <div class="w3-right w3-white" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
     
@@ -520,9 +509,7 @@ letter-spacing: 1px;
       </div>
     </div>
   </div>
-  <hr/>
   
-
 
 <!-- End page content -->
 </div>

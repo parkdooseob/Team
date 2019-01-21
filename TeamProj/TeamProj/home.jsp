@@ -153,7 +153,7 @@ letter-spacing: 1px;
 <!-- Header시작 -->
 
 <header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
-  <img class="w3-image" src="img/main_pic.jpg" width="100%">
+  <img class="w3-image" src="img/main_pic2.jpg" width="100%">
   <form action="search.do" method="post">
  	 <div class="w3-display-middle w3-margin-top w3-center w3-container" style="min-height: 500px; top:80%">
      <!-- 첫 row -->
@@ -326,7 +326,7 @@ letter-spacing: 1px;
   	</div>
 
   	<div class="w3-quarter w3-center">
-  	<a href="Jong/detail.jsp" style="text-decoration: none;">
+  	<a href="#" style="text-decoration: none;">
   	<i class="material-icons" style="font-size:80px;color:#333;">search</i>  	
   	<p style="margin:2px;">공간찾기</p>
   	</a>
@@ -523,12 +523,14 @@ letter-spacing: 1px;
 <!-- End page content -->
 </div>
 
-
 <!-- Footer -->
+	<jsp:include page="Footer.jsp" flush="false"/>
+<!-- Footer 끝 -->
+<!-- Footer
 <footer class="w3-center w3-white w3-padding-50">
   <p><a href="#" title="W3.CSS" target="_blank" class="w3-hover-text-green">Share Space</a></p>
 </footer>
-
+ -->
 
 <script>
 // Slideshow
