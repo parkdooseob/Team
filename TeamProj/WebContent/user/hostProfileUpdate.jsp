@@ -159,7 +159,7 @@
 <div class="w3-container">
 	<div class="w3-row">				
 		<div class="w3-col m8 w3-orange w3-left">
-			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge fa fa-user"></i>&nbsp;&nbsp;&nbsp;호스트 프로필 수정</p> 
+			<p>&nbsp;&nbsp;&nbsp;<i class="w3-xxlarge  fa fa-star"></i>&nbsp;&nbsp;&nbsp;호스트 프로필 수정</p> 
 		</div>		
 	</div>
 	<!-- 정보 수정 시작 -->
