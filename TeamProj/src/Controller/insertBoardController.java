@@ -83,8 +83,7 @@ public class insertBoardController extends HttpServlet {
 				
 			Enumeration formNames = multi.getFileNames(); 
 			
-			String at11 =multi.getParameter("at11");
-			System.out.println(at11 + "aaaa");
+			String at11 =multi.getParameter("at11");			
 			String at12 =multi.getParameter("at12");
 			String at13 =multi.getParameter("at13");
 			String at14 =multi.getParameter("at14");
@@ -202,7 +201,7 @@ public class insertBoardController extends HttpServlet {
 			dao.insert(dto,dto1,dto2,dto3,dto4);
 			
 		RequestDispatcher dis =		
-					request.getRequestDispatcher("detail.jsp");
+					request.getRequestDispatcher("Jong/detail.jsp");
 		
 		dis.forward(request, response);
 			
