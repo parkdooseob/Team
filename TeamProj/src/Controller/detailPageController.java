@@ -25,7 +25,6 @@ public class detailPageController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		request.setCharacterEncoding("UTF-8");
 		int a = Integer.parseInt(request.getParameter("a"));
 		RequestDispatcher dis = request.getRequestDispatcher("detail.jsp");
@@ -42,8 +41,7 @@ public class detailPageController extends HttpServlet {
 			
 			Vector<SelectDTO> vector =	dao.select(2);
 			request.setAttribute("vector", vector);
-			
-			
+	
 						
 			dis.forward(request, response);
 			
@@ -65,7 +63,7 @@ public class detailPageController extends HttpServlet {
 			
 			dis.forward(request, response);
 		}else {
-			System.out.println("�옒紐삳맂 �젒洹�");
+			System.out.println("올바른경로로 접속하시오.");
 		}
 		
 		

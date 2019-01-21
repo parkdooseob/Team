@@ -134,7 +134,7 @@ public class insertBoardController extends HttpServlet {
 			
 			if (fileName == null) { 		
 				
-				System.out.println("���� ���ε� ���� �ʾ���");
+				System.out.println("파일 이름이 없음.");
 				
 			} 
 			
