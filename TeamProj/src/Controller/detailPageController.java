@@ -31,18 +31,13 @@ public class detailPageController extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("detail.jsp");
 		DAO dao = new DAO();
 
-		//�쟾泥�
 		if(a == 1) {
 						
-			//DB�젒洹쇳빐�꽌 
-			//�젣紐�  , ���떎 �떆�옉�떆媛�, 媛�寃�, 李멸퀬�궗�빆 媛��졇�삤湲�
 			Vector<SelectDTO> vector =	dao.select(1);
 			request.setAttribute("vector", vector);
 			
-			//洹몃━怨� detail.jsp濡� 肉뚮젮以�
 			dis.forward(request, response);
 		}
-		//카페
 		else if(a == 2) {
 			
 			Vector<SelectDTO> vector =	dao.select(2);
@@ -53,7 +48,6 @@ public class detailPageController extends HttpServlet {
 			dis.forward(request, response);
 			
 		}
-		//강의실
 		else if(a == 3) {
 			
 
@@ -63,7 +57,6 @@ public class detailPageController extends HttpServlet {
 			
 			dis.forward(request, response);
 		}
-		//룸
 		else if (a == 4) {
 			
 			

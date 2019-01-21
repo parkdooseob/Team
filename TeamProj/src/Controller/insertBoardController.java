@@ -28,22 +28,17 @@ public class insertBoardController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-
-		// fileBoardInsert.jsp���������� �Է��� �������� request�������� �������� ���� �ѱ� ���ڵ� ��� ����
-		// �ѱ� ���� ����
+	
 		request.setCharacterEncoding("UTF-8");
 		
-		// �������� ������ ���ε� �� ������ �̸��� ������ ArrayList
+	
 		ArrayList saveFile = new ArrayList();
 		
-		//Ŭ���̾�Ʈ�� ���ε��ϱ�����  ������ �����̸��� �ϳ��� ������ ArrayList
+		
 		ArrayList originFile = new ArrayList();
-		//C:\Users\Jong\Desktop\jsp1\TeamProject_v5\WebContent\img
-		 // C: ����̺꿡 �̸� test��� ������ ����� ��������
-		//D:\jspp\TeamProject_v6\WebContent\img
-		String savePath = "D:\\jspp\\TeamProject_v6\\WebContent\\img\\"; // ������ ���丮 (������)
-		int sizeLimit = 100 * 1024 * 1024; // 10�ް����� ���� �Ѿ�� ���ܹ߻�
+		
+		String savePath = "D:\\jspp\\TeamProject_v6\\WebContent\\img\\"; 
+		int sizeLimit = 100 * 1024 * 1024; 
 
 		
 		String fileName = "";
@@ -77,7 +72,6 @@ public class insertBoardController extends HttpServlet {
 
 		try {
 
-			// �������� ���ε� Ŭ����(��ü, ������, �������ѻ�����, ������, �����̸��� ������ ����� �̸����� Ŭ����)
 			
 
 
@@ -87,7 +81,7 @@ public class insertBoardController extends HttpServlet {
 			
 
 				
-			Enumeration formNames = multi.getFileNames(); // ���� �̸� ��ȯ (���ε�� �������� ���� �̸� �����ͼ� �ݺ���� �Ѱ� ����)
+			Enumeration formNames = multi.getFileNames(); 
 			
 			String at11 =multi.getParameter("at11");
 			System.out.println(at11 + "aaaa");
@@ -130,18 +124,15 @@ public class insertBoardController extends HttpServlet {
 								
 			while(formNames.hasMoreElements()){
 				
-				String formName = (String) formNames.nextElement(); // �ڷᰡ ���� ��쿣 while ���� ���(�ܰǽ� ó��)
-				fileName = multi.getFilesystemName(formName); // ������ �̸� ��� 
-				// ������ ������ ���ε�� ������ �̸� �ϳ��� �ϳ���! ArrayList�÷��� ��ü�� ����
+				String formName = (String) formNames.nextElement(); 
+				fileName = multi.getFilesystemName(formName); 
 				saveFile.add(fileName);
-				originalFileName = multi.getOriginalFileName(formName); //���� �̸� ��������
-				// Ŭ���̾�Ʈ�� ���ε� �� ������ �����̸��� �ϳ��� �ϳ��� ArrayList�÷��� ��ü�� ����
+				originalFileName = multi.getOriginalFileName(formName); 
 				originFile.add(originalFileName);
 			}
-			/* ���� ���ε� Ŭ�������� �Է��� �ʵ���� �޾ƿͼ� ���� */
 		
 			
-			if (fileName == null) { // ������ ���ε� ���� �ʾ�����				
+			if (fileName == null) { 		
 				
 				System.out.println("���� ���ε� ���� �ʾ���");
 				
@@ -165,7 +156,7 @@ public class insertBoardController extends HttpServlet {
 			
 			System.out.println(saveFile.get(0));
 			
-			//Hosting ���̺�
+			//Hosting
 			HostingDTO dto = new HostingDTO();
 			dto.setPeople(peopleValue);			
 			dto.setContent(content);
@@ -177,12 +168,12 @@ public class insertBoardController extends HttpServlet {
 			dto.setaTime(at);
 			
 			
-			//HostingBill ���̺�
+			//HostingBill
 			HostingBillDTO dto1 = new HostingBillDTO();
 			dto1.setRoom_day(day);
 			dto1.setRoom_sum(bill);
 			
-			//HostingOption ���̺�
+			//HostingOption 
 			HostingOptionDTO dto2 = new HostingOptionDTO();
 			dto2.setDrink(drink);
 			dto2.setParking(parking);
@@ -191,13 +182,13 @@ public class insertBoardController extends HttpServlet {
 			dto2.setEtc(etc);
 			
 			
-			//HostingPic ���̺�
+			//HostingPic
 			HostingPicDTO dto3 = new HostingPicDTO();
 			dto3.setPic1(img1);
 			dto3.setPic2(img2);
 			dto3.setPic3(img3);
 			
-			//HostingAddress ���̺�
+			//HostingAddress 
 			HostingAddressDTO dto4 = new HostingAddressDTO();
 			dto4.setA_address(address);
 			dto4.setA_D_address(detailAddress);
@@ -219,7 +210,7 @@ public class insertBoardController extends HttpServlet {
 			
 
 		} catch (Exception e) {
-/* 				out.print("���� ��Ȳ �߻�..! ");
+/* 			
 */			} //catch		
 
 	
