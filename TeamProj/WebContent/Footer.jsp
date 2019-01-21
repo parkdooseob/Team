@@ -82,41 +82,37 @@ $(document).ready(function() {
 });
 </script>
 <style type="text/css">
- .w3-bar-item{
-  letter-spacing: 1px;
-  font-family: "Nanum Barun Gothic" !important; 
-  color: #666666;
-  font-style: bold;
-}
-#drop>a{
-	border-bottom: 1px solid #f2f2f2;
-}
-#drop>a:HOVER{
-	border-bottom: 1px solid black;
-	trans
-}
-
 a{
    text-decoration:none;
 }
 
-#footerDiv{
-	 height: auto;
-	 border: 5px solid #5c8a8a; 
+#footerDiv{	
+	width: 100%; height: 300px;
+	/*background-image: url("../img/header.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+	padding: 15px 5% 10px 5%;*/
+	
 }
 
 p{
  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+#container{
+	
+}
+
 </style>
 </head>
 <body>
 
-<div id="footerDiv"class="w3-row">
+<div id="footerDiv">
+	<div id="container">
   	<div class="w3-container w3-blue-grey w3-center">
-		<img src="event/e_img/footer_img.jpg" style="hight:150px;">
-  		<p class="w3-container w3-blue-grey" style="hight:150px;">
+		<img src="event/e_img/footer_img.jpg">
+  		<p class="w3-container w3-blue-grey">
   			대표이사: (주) Share Space | 6강2조 | 주소: 부산 아이티윌 <br/>
 			메일: help@sharespace.com | tel: 1644-1234(9am-6pm)<br/>
 			호스팅 서비스 제공자: (주)Share Space<br/>
@@ -138,7 +134,8 @@ p{
   			<i class="material-icons">favorite</i>
   		</a>
   	</div>
-  </div>  	
+  </div>  
+  </div> <!-- container -->
 </div>
 
 <!-- Footer 
