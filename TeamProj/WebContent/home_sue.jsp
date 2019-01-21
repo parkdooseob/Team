@@ -141,6 +141,10 @@ letter-spacing: 1px;
  
 }
 
+#show{
+	border: 1px solid #f2f2f2;
+}
+
 </style>
 
 
@@ -484,11 +488,11 @@ letter-spacing: 1px;
 
  <!-- Slideshow -->
  <hr/>
-  <div class="w3-container">
+  <div id="show" class="w3-container">
     <div class="w3-display-container mySlides">
-      <img src="img/event02.jpg" style="width:100%; height:30%;">
+      <img src="event/e_img/show1.jpg" style="width:100%; height:30%;">
       <div class="w3-display-topleft w3-container w3-padding-32">
-        <span class="w3-white w3-padding-large w3-animate-bottom">Lorem ipsum</span>
+        <span class="w3-blue w3-padding-large w3-animate-bottom">Lorem ipsum</span>
       </div>
     </div>
     <div class="w3-display-container mySlides">
@@ -505,9 +509,9 @@ letter-spacing: 1px;
     </div>
 
     <!-- Slideshow next/previous buttons -->
-    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
-      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
-      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+    <div class="w3-container w3-white w3-padding w3-xlarge">
+      <div class="w3-left w3-white" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right w3-white" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
     
       <div class="w3-center">
         <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
@@ -523,27 +527,9 @@ letter-spacing: 1px;
 <!-- End page content -->
 </div>
 
-
 <!-- Footer -->
-	<footer class="w3-center w3-white w3-padding-50">		
-			<div class="w3-cell-row">
-			 <div class="w3-container w3-blue-grey w3-cell w3-mobile">
-			 	<img src="img/footer_name.jpg">
-					<p>대표이사: (주) Share Space | 6강2조 | 주소: 부산 아이티윌 <br/>
-					메일: help@sharespace.com | tel: 1644-1234(9am - 6pm)<br/>
-					호스팅 서비스 제공자: (주)Share Space<br/></p>
-					<div class="w3-small">(주)Share Space는 통신판매중개자로서, 통신판매의 당사자가 아니라는 사실을 고지하며<br/>
-					상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다</div>
-					
-				<div class="w3-bar w3-blue-grey">
- 					<div class="w3-bar-item">  </div>
- 			 	</div>
- 			 	
-		 	 </div>
-		 	 <div class="w3-container  w3-blue-grey w3-cell w3-mobile">
-		 	 </div>		 	
-	</footer>
-
+	<jsp:include page="Footer.jsp" flush="false"/>
+<!-- Footer 끝 -->
 
 <script>
 // Slideshow

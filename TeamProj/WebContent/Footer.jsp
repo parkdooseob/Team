@@ -20,6 +20,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -99,28 +100,77 @@ a{
    text-decoration:none;
 }
 
+#footerDiv{
+	 height: auto;
+	 border: 5px solid #5c8a8a; 
+}
+
+p{
+ font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 </style>
 </head>
 <body>
-<!-- Footer -->
-	<footer>
-		<div class="w3-bottom">			
+
+<div id="footerDiv"class="w3-row">
+  	<div class="w3-container w3-blue-grey w3-center">
+		<img src="event/e_img/footer_img.jpg" style="hight:150px;">
+  		<p class="w3-container w3-blue-grey" style="hight:150px;">
+  			대표이사: (주) Share Space | 6강2조 | 주소: 부산 아이티윌 <br/>
+			메일: help@sharespace.com | tel: 1644-1234(9am-6pm)<br/>
+			호스팅 서비스 제공자: (주)Share Space<br/>
+		</p>
+	<div class="w3-container w3-small w3-blue-grey">
+			<p>
+			(주)Share Space는 통신판매중개자로서, 통신판매의 당사자가 아니라는 사실을 고지하며<br/>
+			상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다<br/>
+			</p>
+	</div>
+	<div class="w3-container w3-blue-grey w3-center">
+		<a href="#">
+  			<i class="material-icons">favorite</i>
+  		</a>
+  		<a href="#">
+  			<i class="material-icons">favorite</i>
+  		</a>
+  		<a href="#">
+  			<i class="material-icons">favorite</i>
+  		</a>
+  	</div>
+  </div>  	
+</div>
+
+<!-- Footer 
+	<footer class="w3-center w3-white w3-padding-50">
 			<div class="w3-cell-row">
-		 		 <div class="w3-container w3-blue-grey w3-cell w3-mobile">
-		   		 <p>(주) Share Space | tel: 1644-1234(9am - 6pm) </p>
-		 	 </div>
-		 	 <div class="w3-container  w3-sand w3-cell w3-mobile">
-		 	 	<div class="w3-bar w3-sand w3-right">
-					  <a href="#" class="w3-bar-item w3-hover-green">Home</a>
-					  <a href="#" class="w3-bar-item w3-hover-green">검색 </a>
-					  <a href="#" class="w3-bar-item w3-hover-green">호스팅 </a>
-					  <a href="#" class="w3-bar-item w3-hover-green">예약내역 </a>
-		  		</div>
-		 	 </div>
-		 	
-		</div>
+				<div class="w3-container w3-blue-grey w3-cell w3-mobile w3-display-bottomleft w3-hight-100">
+					<img src="img/footer_img.jpg">
+		 	 	</div>
+		 	 	<div class="w3-container  w3-blue-grey w3-cell w3-mobile w3-display-bottommiddle w3-hight-'142'">
+					<div class="w3-bar-item w3-left">
+					대표이사: (주) Share Space | 6강2조 | 주소: 부산 아이티윌 <br/>
+					메일: help@sharespace.com | tel: 1644-1234(9am-6pm)<br/>
+					호스팅 서비스 제공자: (주)Share Space<br/>
+					</div>
+					<div class="w3-small">(주)Share Space는 통신판매중개자로서, 통신판매의 당사자가 아니라는 사실을 고지하며<br/>
+					상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다
+					</div>
+		 	 	</div>
+		 	 	<div class="w3-container  w3-blue-grey w3-cell w3-mobile">
+					
+		 	 	</div>
+				 <div class="w3-container w3-blue-grey w3-cell w3-mobile">			 	
+					<p class="w3-left">대표이사: (주) Share Space | 6강2조 | 주소: 부산 아이티윌 <br/>
+					메일: help@sharespace.com | tel: 1644-1234(9am-6pm)<br/>
+					호스팅 서비스 제공자: (주)Share Space<br/></p>
+					<div class="w3-small">(주)Share Space는 통신판매중개자로서, 통신판매의 당사자가 아니라는 사실을 고지하며<br/>
+					상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다
+					</div>					
+				</div>			
+		 	 </div>		 	
 	</footer>
-<!-- Footer 종료  -->
+ Footer 종료  -->
 
 
 
